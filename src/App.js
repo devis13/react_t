@@ -7,12 +7,13 @@ import Navigation from './components/Navigation/Navigation';
 
 function App() {
   return (
-    <div className="--grid-wrap">
-      <Header />
+    <div className="grid_wrap">
+      <div className="header"><Header /></div>
 
-      <Navigation />
-
-      <Contents />
+      <div className="main_block">
+        <div className="navigation"><Navigation /></div>
+        <div calssName="contents"><Contents /></div>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,29 @@
+.banner {
+    margin-bottom: 10px;
+}
+
 .banner img{
-    max-width: calc(var(--width-wrap)/var(--grid-total-col)*var(--grid-content-col));
+    max-width: 100%;
+
+    vertical-align: bottom;
 }
 
 .wrapInfo {
     display: flex;
+}
+
+.avatar {
+    margin-right: 5px;
+}
+
+.avatar img {
+    vertical-align: bottom;
+}
+
+.info p {
+    margin-bottom: 10px;
+}
+
+.name {
+    margin-bottom: 20px;
 }

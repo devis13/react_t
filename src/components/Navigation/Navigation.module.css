@@ -1,6 +1,8 @@
 .navBar {
+    width: 160px;
+
     background-color: #ff8000;
-    grid-area: nav;
+
 }
 
 .list {

@@ -1,17 +1,34 @@
 :root {
     --width-wrap: 960px;
-    --grid-total-col: 12;
-    --grid-nav-col: 2;
-    --grid-nav-col-fr: 2fr;
-    --grid-content-col: 10;
-    --grid-content-col-fr: 10fr;
 }
 
-.--grid-wrap {
-    display: grid;
-    grid-template-areas: "header header" "nav content";
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: var(--grid-nav-col-fr) var(--grid-content-col-fr);
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.grid_wrap {
     width: var(--width-wrap);
     margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 10px;
+}
+
+.navigation {
+    margin-right: 10px;
+
+    align-self: stretch;
+
+    background-color: #ff8000;
+}
+
+.main_block {
+    display: flex;
 }
