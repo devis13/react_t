@@ -1,3 +1,4 @@
+import MyPosts from "./MyPosts/MyPosts";
 import profile from "./Profile.module.css";
 
 function Profile() {
@@ -18,6 +19,8 @@ function Profile() {
                     <p className={profile.site}>Web Site: <a href="google.com">google.com</a></p>
                 </div>
             </div>
+
+            <div className={profile.myPosts}><MyPosts /></div>
         </div>
     )
 }
