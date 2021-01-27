@@ -1,0 +1,22 @@
+.navBar {
+    background-color: #ff8000;
+    grid-area: nav;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    list-style-type: none;
+}
+
+.elem {
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    padding-bottom: 10px;
+}
+
+.elem:nth-child(4) {
+    padding-bottom: 40px;
+}

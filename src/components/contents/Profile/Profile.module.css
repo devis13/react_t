@@ -1,0 +1,7 @@
+.banner img{
+    max-width: calc(var(--width-wrap)/var(--grid-total-col)*var(--grid-content-col));
+}
+
+.wrapInfo {
+    display: flex;
+}
