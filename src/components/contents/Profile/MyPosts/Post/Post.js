@@ -1,9 +1,12 @@
-// function Post() {
-//     return (
-//         <div>
-//             asdasd
-//         </div>
-//     )
-// }
+import post from "./Post.module.css";
 
-// export default Post;
+function Post() {
+    return (
+        <div className={post.item}>
+            <img src="#" alt="ava" className={post.image}/>
+            <p className={post.text}>asdasd</p>
+        </div>
+    )
+}
+
+export default Post;

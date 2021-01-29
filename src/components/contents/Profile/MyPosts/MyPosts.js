@@ -1,13 +1,14 @@
-// import Post from "./Post/Post";
+import Post from "./Post/Post";
 
 import myPosts from "./MyPosts.module.css";
 
 function MyPosts() {
     return (
-        <div className="myPosts">
+        <div className={myPosts.myPosts}>
             <h2 className={myPosts.title}>My posts</h2>
-            <textarea />
-            {/* <Post /> */}
+            <textarea className={myPosts.text}></textarea>
+            <button className={myPosts.button}>Send</button>
+            <Post />
         </div>
     )
 }
