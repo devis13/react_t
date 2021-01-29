@@ -3,7 +3,7 @@ import profile from "./Profile.module.css";
 
 function Profile() {
     return (
-        <div className={profile.box}>
+        <div className={profile.profile}>
             <div className={profile.banner}>
                 <img  src="https://d2afajug0qougp.cloudfront.net/wp-content/uploads/2017/12/21215942/pexels-photo-250177-800x200.jpeg" alt="Новый год!!" />
             </div>

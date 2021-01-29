@@ -6,9 +6,11 @@ function MyPosts() {
     return (
         <div className={myPosts.myPosts}>
             <h2 className={myPosts.title}>My posts</h2>
-            <textarea className={myPosts.text}></textarea>
-            <button className={myPosts.button}>Send</button>
-            <Post />
+            <div className={myPosts.textWrap}>
+                <textarea className={myPosts.mytext}></textarea>
+                <button className={myPosts.button}>Send</button>
+            </div>
+            <div className={myPosts.item}><Post /></div>
         </div>
     )
 }
