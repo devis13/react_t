@@ -10,7 +10,12 @@ function MyPosts() {
                 <textarea className={myPosts.mytext}></textarea>
                 <button className={myPosts.button}>Send</button>
             </div>
-            <div className={myPosts.item}><Post /></div>
+
+            <div className={myPosts.posts}>
+                <div className={myPosts.item}><Post text="Hi"/></div>
+                <div className={myPosts.item}><Post text="Hi"/></div>
+                <div className={myPosts.item}><Post text="Hi"/></div>
+            </div>
         </div>
     )
 }
