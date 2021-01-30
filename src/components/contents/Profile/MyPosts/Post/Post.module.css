@@ -8,12 +8,26 @@
     background-color: rgba(202,202,202,1.0);
 }
 
-.image {
+.avatarWrap {
+    position: relative;
+
     width: 50px;
+    height: 50px;
+
+    overflow: hidden;
+    border-radius: 50%;
+    color:red;
+}
+
+.avatar {
+    position: absolute;
+    left: -7px;
+
+    width: 70px;
     height: 50px;
     margin-right: 20px;
 
-    border-radius: 50%;
+    
 
     vertical-align: bottom;
 }
