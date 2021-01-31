@@ -1,9 +1,9 @@
 import MyPosts from "./MyPosts/MyPosts";
 import profile from "./Profile.module.css";
 
-function Profile() {
+function Profile(props) {
     return (
-        <div className={profile.profile}>
+        <div className={profile.profile + " " + props.className}>
             <div className={profile.banner}>
                 <img  src="https://d2afajug0qougp.cloudfront.net/wp-content/uploads/2017/12/21215942/pexels-photo-250177-800x200.jpeg" alt="Новый год!!" />
             </div>
@@ -20,7 +20,7 @@ function Profile() {
                 </div>
             </div>
 
-            <div className={profile.myPosts}><MyPosts /></div>
+            <MyPosts className={profile.myPosts} />
         </div>
     )
 }

@@ -8,11 +8,11 @@ import Navigation from './components/Navigation/Navigation';
 function App() {
   return (
     <div className="grid_wrap">
-      <div className="header"><Header /></div>
+      <Header className="header"/>
 
       <div className="main_block">
-        <div className="navigation"><Navigation /></div>
-        <div calssName="contents"><Contents /></div>
+        <Navigation className="navigation"/>
+        <Contents calssName="contents"/>
       </div>
     </div>
   );

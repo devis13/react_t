@@ -35,3 +35,11 @@
 .item {
     margin-bottom: 5px;
 }
+
+.post {
+    background-color: red;
+}
+
+.mb {
+    margin-bottom: 40px;
+}

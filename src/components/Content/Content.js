@@ -1,9 +1,9 @@
 import Profile from "../contents/Profile/Profile";
 import style from "./Content.module.css";
 
-function Contents() {
+function Contents(props) {
     return (
-        <section className={style.content}>
+        <section className={style.content + " " + props.className}>
             <Profile />
         </section>
     );
