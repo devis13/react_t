@@ -1,0 +1,31 @@
+.banner {
+    margin-bottom: 10px;
+}
+
+.banner img{
+    max-width: 100%;
+
+    vertical-align: bottom;
+}
+
+.wrapInfo {
+    display: flex;
+
+    margin-bottom: 20px;
+}
+
+.avatar {
+    margin-right: 5px;
+}
+
+.avatar img {
+    vertical-align: bottom;
+}
+
+.info p {
+    margin-bottom: 10px;
+}
+
+.name {
+    margin-bottom: 20px;
+}

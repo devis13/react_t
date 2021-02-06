@@ -1,0 +1,15 @@
+.name {
+    margin-left: 20px;
+    
+    color: #000;
+
+    text-decoration: none;
+}
+
+.name:hover {
+    text-decoration: underline;
+}
+
+.active {
+    color: #17f03b; 
+}
