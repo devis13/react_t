@@ -1,14 +1,15 @@
+import { NavLink } from "react-router-dom";
 import style from "./Navigation.module.css";
 
 function Navigation(props) {
     return (
         <section className={style.navBar + " " + props.className}>
             <ul className={style.list}>
-                <li className={style.elem}><a href="/profile" className="nav-bar__link">Profile</a></li>
-                <li className={style.elem}><a href="/dialogs" className="nav-bar__link">Messages</a></li>
-                <li className={style.elem}><a href="/news" className="nav-bar__link">News</a></li>
-                <li className={style.elem}><a href="/music" className="nav-bar__link">Music</a></li>
-                <li className={style.elem}><a href="/settings" className="nav-bar__link">Settings</a></li>
+                <li className={style.elem}><NavLink to="/profile" className={style.link} activeClassName={style.active}>Profile</NavLink></li>
+                <li className={style.elem}><NavLink to="/dialogs" className={style.link} activeClassName={style.active}>Messages</NavLink></li>
+                <li className={style.elem}><NavLink to="/news" className={style.link} activeClassName={style.active}>News</NavLink></li>
+                <li className={style.elem}><NavLink to="/music" className={style.link} activeClassName={style.active}>Music</NavLink></li>
+                <li className={style.elem}><NavLink to="/settings" className={style.link} activeClassName={style.active}>Settings</NavLink></li>
             </ul>
         </section>
     );

@@ -13,33 +13,30 @@ function Contents(props) {
     };
 
     const DialogsWrap = (props) => {
-        return (<Dialogs {...props} className={style.dialogs}/>)
+        return (<Dialogs {...props} className={style.dialogs} />)
     };
 
     const MusicWrap = (props) => {
-        return (<Music {...props} className={style.music}/>)
+        return (<Music {...props} className={style.music} />)
     };
 
     const NewsWrap = (props) => {
-        return (<News {...props} className={style.news}/>)
+        return (<News {...props} className={style.news} />)
     };
-    
+
     const SettingsWrap = (props) => {
-        return (<Settings {...props} className={style.settings}/>)
+        return (<Settings {...props} className={style.settings} />)
     };
 
 
     return (
-        // <BrowserRouter>
-            <section className={style.content + " " + props.className}>
-
-                <Route path="/profile" component={ProfileWrap} />
-                <Route path="/dialogs" component={DialogsWrap} />
-                <Route path="/music" component={MusicWrap} />
-                <Route path="/news" component={NewsWrap} />
-                <Route path="/settings" component={SettingsWrap} />
-            </section>
-        // </BrowserRouter>
+        <section className={style.content + " " + props.className}>
+            <Route path="/profile" component={ProfileWrap} />
+            <Route path="/dialogs" component={DialogsWrap} />
+            <Route path="/music" component={MusicWrap} />
+            <Route path="/news" component={NewsWrap} />
+            <Route path="/settings" component={SettingsWrap} />
+        </section>
     );
 };
 

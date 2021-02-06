@@ -22,3 +22,17 @@
 .elem:nth-child(4) {
     padding-bottom: 40px;
 }
+
+.link {
+    text-decoration: none;
+
+    color: #fff;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.active {
+    color: #f1f107
+}
