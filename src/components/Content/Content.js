@@ -7,35 +7,39 @@ import Settings from "./contents/Settings/Settings";
 import style from "./Content.module.css";
 
 function Contents(props) {
+    // debugger;
 
-    const ProfileWrap = (props) => {
-        return (<Profile {...props} className={style.profile} />)
+    const ProfileWrap = () => {
+        return (<Profile    className={style.profile}
+                            postData={props.postData}/>)
     };
 
-    const DialogsWrap = (props) => {
-        return (<Dialogs {...props} className={style.dialogs} />)
+    const DialogsWrap = () => {
+        return (<Dialogs    className={style.dialogs} 
+                            userDate={props.userDate}
+                            messageDate={props.messageDate}/>)
     };
 
-    const MusicWrap = (props) => {
-        return (<Music {...props} className={style.music} />)
+    const MusicWrap = () => {
+        return (<Music className={style.music} />)
     };
 
-    const NewsWrap = (props) => {
-        return (<News {...props} className={style.news} />)
+    const NewsWrap = () => {
+        return (<News className={style.news} />)
     };
 
-    const SettingsWrap = (props) => {
-        return (<Settings {...props} className={style.settings} />)
+    const SettingsWrap = () => {
+        return (<Settings className={style.settings} />)
     };
 
 
     return (
         <section className={style.content + " " + props.className}>
-            <Route path="/profile" component={ProfileWrap} />
-            <Route path="/dialogs" component={DialogsWrap} />
-            <Route path="/music" component={MusicWrap} />
-            <Route path="/news" component={NewsWrap} />
-            <Route path="/settings" component={SettingsWrap} />
+            <Route path="/profile" render={ProfileWrap} />
+            <Route path="/dialogs" render={DialogsWrap} />
+            <Route path="/music" render={MusicWrap} />
+            <Route path="/news" render={NewsWrap} />
+            <Route path="/settings" render={SettingsWrap} />
         </section>
     );
 };

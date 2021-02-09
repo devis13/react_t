@@ -3,6 +3,9 @@ import Post from "./Post/Post";
 import myPosts from "./MyPosts.module.css";
 
 function MyPosts(props) {
+    // debugger;
+    const post = props.postData.map((obj) => <Post className={myPosts.item} id={obj.id} text={obj.text}/>)
+
     return (
         <div className={myPosts.myPosts + " " + props.className}>
             <h2 className={myPosts.title}>My posts</h2>
@@ -12,9 +15,7 @@ function MyPosts(props) {
             </div>
 
             <div className={myPosts.posts}>
-                <Post className={myPosts.item} text="Hi"/>
-                <Post className={myPosts.item} text="Hi"/>
-                <Post className={myPosts.item} text="Hi"/>
+                {post}
             </div>
         </div>
     )

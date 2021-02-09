@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import styles from "./Dialog.module.css";
+import styles from "./User.module.css";
 
-const Dialog = (props) => {
+const User = (props) => {
     const puth = "/dialogs/" + props.id;
 
     return (
@@ -11,4 +11,4 @@ const Dialog = (props) => {
     )
 }
 
-export default Dialog;
+export default User;
