@@ -4,7 +4,7 @@ import myPosts from "./MyPosts.module.css";
 
 function MyPosts(props) {
     // debugger;
-    const post = props.postData.map((obj) => <Post className={myPosts.item} id={obj.id} text={obj.text}/>)
+    const post = props.state.postData.map((obj) => <Post className={myPosts.item} id={obj.id} text={obj.text}/>)
 
     return (
         <div className={myPosts.myPosts + " " + props.className}>

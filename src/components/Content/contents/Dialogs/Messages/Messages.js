@@ -3,7 +3,7 @@ import styles from "./Messages.module.css";
 
 const Messages = (props) => {
 
-    const massage = props.state.messageDate.map((obj) => {
+    const massage = props.state.messageData.map((obj) => {
         return <Message className={styles.massage} id={obj.id}  text={obj.massage}/>;
     });
 

@@ -1,6 +1,6 @@
 const state = {
     navigation: {
-        navDate: [
+        navData: [
             { id: 1, path: "/profile", title: "Profile" },
             { id: 2, path: "/dialogs", title: "Messages" },
             { id: 3, path: "/news", title: "News" },
@@ -11,16 +11,18 @@ const state = {
 
     contents: {
         profile: {
-            postData: [
-                { id: 1, text: "hi" },
-                { id: 2, text: "hi" },
-                { id: 3, text: "hi" },
-            ],
+            myPosts: {
+                postData: [
+                    { id: 1, text: "hi" },
+                    { id: 2, text: "hi" },
+                    { id: 3, text: "hi" },
+                ],
+            },
         },
 
         dialogs: {
-            userList: {
-                userDate: [
+            users: {
+                userData: [
                     { name: "Andrey", id: "1" },
                     { name: "Ivan", id: "2" },
                     { name: "Tymur", id: "3" },
@@ -29,7 +31,7 @@ const state = {
             },
 
             messages: {
-                messageDate: [
+                messageData: [
                     { id: 1, massage: "Hello!!!" },
                     { id: 2, massage: "Hello!!!" },
                     { id: 3, massage: "Hello!!!" },
