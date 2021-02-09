@@ -1,6 +1,6 @@
 import './App.css';
 
-import { BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import Contents from './components/Content/Content';
 import Header from './components/Header/Header';
@@ -15,13 +15,16 @@ function App(props) {
         <Header className="header" />
 
         <div className="main_block">
-          <Navigation className="navigation" navDate={props.navDate}/>
+          <Navigation className="navigation" state={props.state.navigation}/>
+          {/* 
+            postData={props.postData}
+            userDate={props.userDate}
+            messageDate={props.messageDate} 
+            */}
 
-          
-          <Contents   calssName="contents" 
-                      postData={props.postData}
-                      userDate={props.userDate}
-                      messageDate={props.messageDate}/>
+          <Contents calssName="contents"
+                    state={props.state.contents}
+          />
         </div>
       </div>
     </BrowserRouter>

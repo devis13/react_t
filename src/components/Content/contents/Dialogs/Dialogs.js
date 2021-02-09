@@ -6,9 +6,9 @@ const Dialogs = (props) => {
     return (
         <div className={styles.dialogs + " " + props.className}>
             <UserList   className={styles.list}
-                        userDate={props.userDate}/>
+                        state={props.state.userList}/>
             <Messages className={styles.messages}
-                        messageDate={props.messageDate}/>
+                        state={props.state.messages}/>
         </div>
     )
 }

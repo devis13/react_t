@@ -11,13 +11,15 @@ function Contents(props) {
 
     const ProfileWrap = () => {
         return (<Profile    className={style.profile}
-                            postData={props.postData}/>)
+                            state={props.state.profile}/>)
     };
+
+    // userDate={props.userDate}
+    // messageDate={props.messageDate}
 
     const DialogsWrap = () => {
         return (<Dialogs    className={style.dialogs} 
-                            userDate={props.userDate}
-                            messageDate={props.messageDate}/>)
+                            state={props.state.dialogs}/>)
     };
 
     const MusicWrap = () => {

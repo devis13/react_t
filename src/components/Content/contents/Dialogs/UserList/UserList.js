@@ -3,7 +3,7 @@ import styles from "./UserList.module.css";
 
 const DialogsList = (props) => {
 
-    const user = props.userDate.map((obj) => <User name={obj.name} id={obj.id} className={styles.item}/> )
+    const user = props.state.userDate.map((obj) => <User name={obj.name} id={obj.id} className={styles.item}/> )
 
     return (
         <div className={styles.dialogsList + " " + props.className}>
