@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import Contents from './components/Content/Content';
 import Header from './components/Header/Header';
-import Navigation from './components/Navigation/Navigation';
+import SideBar from './components/SideBar/SideBar';
 
 
 function App(props) {
@@ -15,16 +15,10 @@ function App(props) {
         <Header className="header" />
 
         <div className="main_block">
-          <Navigation className="navigation" state={props.state.navigation}/>
-          {/* 
-            postData={props.postData}
-            userDate={props.userDate}
-            messageDate={props.messageDate} 
-            */}
+          {/* <Navigation className="navigation" state={props.state.navigation}/> */}
+          <SideBar className="sideBar" state={props.state.sideBar}/>
 
-          <Contents calssName="contents"
-                    state={props.state.contents}
-          />
+          <Contents calssName="contents" state={props.state.contents}/>
         </div>
       </div>
     </BrowserRouter>
