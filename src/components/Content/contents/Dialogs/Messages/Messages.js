@@ -1,7 +1,16 @@
+import React from 'react';
 import Message from "./Message/Message";
 import styles from "./Messages.module.css";
 
 const Messages = (props) => {
+
+    let newMessageElement = React.createRef();
+
+    let newMessage = () => {
+        let text = newMessageElement.current.value;
+
+        alert(text);
+    };
 
     const massage = props.state.messageData.map((obj) => {
         return <Message className={styles.message} 
@@ -13,7 +22,9 @@ const Messages = (props) => {
 
     return (
         <div className={styles.messages + " " + props.className}>
-            {massage}
+            <div className={styles.messageWrap}>{massage}</div>
+            <textarea ref={newMessageElement} className={styles.textarea}></textarea>
+            <button onClick={newMessage} className={styles.button}>send</button>
         </div>
     )
 }
