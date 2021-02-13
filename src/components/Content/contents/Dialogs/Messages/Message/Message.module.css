@@ -1,3 +1,35 @@
 .message {
+    display: flex;
+}
+
+.avtorMessage {
+    display: flex;
+
+    flex-direction: row-reverse;
+
+    text-align: right;
+}
+
+.avatar {
+    min-width: 40px;
+    min-height: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    border-radius: 50%;
+
+    background-color: red;
+}
+
+.text {
+    max-width: 490px;
+    padding: 10px;
+
+    border-radius: 10px;
     background-color: rgb(221, 219, 219);
+
+    font-size: 15px;
+    line-height: 20px;
+    vertical-align: middle;
 }

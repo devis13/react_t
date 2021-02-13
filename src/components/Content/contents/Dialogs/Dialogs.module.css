@@ -1,7 +1,9 @@
 .dialogs {
     display: flex;
+
+    width: 790px;
 }
 
-.list {
+/* .list {
     margin-right: 100px;
-}
+} */

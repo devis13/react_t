@@ -2,6 +2,10 @@
     --width-wrap: 960px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 h2 {
     margin: 0;
     padding: 0;

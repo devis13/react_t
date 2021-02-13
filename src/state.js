@@ -1,4 +1,7 @@
+const avPath = "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg";
+
 const state = {
+
     sideBar : {
         navigation: {
             navData: [
@@ -12,12 +15,12 @@ const state = {
 
         friends: {
             friendsDate: [
-                {id: 1, avatarPath: "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg", name: "Andrey"},
-                {id: 1, avatarPath: "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg", name: "Andrey"},
-                {id: 1, avatarPath: "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg", name: "Andrey"},
-                {id: 1, avatarPath: "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg", name: "Andrey"},
-                {id: 1, avatarPath: "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg", name: "Andrey"},
-                {id: 1, avatarPath: "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg", name: "Andrey"},
+                {id: 1, avatarPath: avPath, name: "Andrey"},
+                {id: 1, avatarPath: avPath, name: "Andrey"},
+                {id: 1, avatarPath: avPath, name: "Andrey"},
+                {id: 1, avatarPath: avPath, name: "Andrey"},
+                {id: 1, avatarPath: avPath, name: "Andrey"},
+                {id: 1, avatarPath: avPath, name: "Andrey"},
             ],
         },
     },
@@ -46,9 +49,13 @@ const state = {
 
             messages: {
                 messageData: [
-                    { id: 1, massage: "Hello!!!" },
-                    { id: 2, massage: "Hello!!!" },
-                    { id: 3, massage: "Hello!!!" },
+                    { id: 1, avatarPath: avPath, massage: "Eu voluptate eu excepteur aliquip magna veniam nisi culpa cillum consectetur."
+                                    + "Consectetu laboris eu non laboris adipisicing nostrud nostrud laboris nisi ullamco dolore reprehenderit.", avtor: false},
+                    { id: 2, avatarPath: avPath, massage: "Hello!!!", avtor: true },
+                    { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: false },
+                    { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: false },
+                    { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: true },
+                    { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: false },
                 ],
             },
         },
