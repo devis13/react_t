@@ -18,7 +18,9 @@ function App(props) {
           {/* <Navigation className="navigation" state={props.state.navigation}/> */}
           <SideBar className="sideBar" state={props.state.sideBar}/>
 
-          <Contents calssName="contents" state={props.state.contents}/>
+          <Contents calssName="contents" 
+                    state={props.state.contents}
+                    addPost={props.addPost}/>
         </div>
       </div>
     </BrowserRouter>

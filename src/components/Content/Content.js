@@ -11,7 +11,8 @@ function Contents(props) {
 
     const ProfileWrap = () => {
         return (<Profile    className={style.profile}
-                            state={props.state.profile}/>)
+                            state={props.state.profile}
+                            addPost={props.addPost}/>)
     };
 
     // userDate={props.userDate}

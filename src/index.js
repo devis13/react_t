@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import state from './state';
+import state, { addPost } from './state';
 
 // postData = { postData }
 // navDate = { navDate }
@@ -13,7 +13,8 @@ import state from './state';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App  state={state}/>
+    <App  state={state}
+          addPost={addPost}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

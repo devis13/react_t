@@ -1,5 +1,16 @@
 const avPath = "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg";
 
+export let addPost = (newPost) => {
+    debugger;
+    state.contents.profile.myPosts.postData.push(
+        {
+            id: state.contents.profile.myPosts.postData.length + 1,
+            text: newPost,
+        }
+    )
+};
+
+
 const state = {
 
     sideBar : {
