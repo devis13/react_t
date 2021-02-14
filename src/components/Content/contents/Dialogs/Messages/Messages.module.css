@@ -1,5 +1,5 @@
 .messages {
-    width: 620px;
+    width: calc(620/790*100%);
 
     padding: 10px 10px 0 0;
 }
@@ -13,7 +13,7 @@
 }
 
 .textarea {
-    width: 500px;
+    width: calc(500/620*100%);
     height: 50px;
     margin-right: 10px;
     margin-left: 10px;
@@ -23,7 +23,7 @@
 
 
 .button {
-    width: 80px;
+    width: calc(80/620*100%);
     height: 50px;
 
     vertical-align: top;

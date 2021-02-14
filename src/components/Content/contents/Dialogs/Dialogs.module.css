@@ -1,7 +1,7 @@
 .dialogs {
     display: flex;
-
-    width: 790px;
+    /* width: calc(790/960*100%); */
+    width: 100%;
 }
 
 /* .list {

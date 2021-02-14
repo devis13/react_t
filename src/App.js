@@ -11,7 +11,7 @@ function App(props) {
   // debugger;
   return (
     <BrowserRouter>
-      <div className="grid_wrap">
+      <div className="main_container">
         <Header className="header" />
 
         <div className="main_block">

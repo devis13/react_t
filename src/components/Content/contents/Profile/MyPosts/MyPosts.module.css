@@ -3,7 +3,7 @@
 }
 
 .textWrap {
-    width: 600px;
+    width: calc(600/790*100%);
     margin-bottom: 30px;
 }
 
@@ -19,7 +19,7 @@
 .button {
     display: block;
 
-    width: 150px;
+    width: calc(150/790*100%);
     margin-left: auto;
     margin-right: 0;
     padding-top: 3px;

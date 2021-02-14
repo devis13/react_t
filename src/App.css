@@ -16,8 +16,9 @@ p {
     padding: 0;
 }
 
-.grid_wrap {
-    width: var(--width-wrap);
+.main_container {
+    width: 100%;
+    max-width: var(--width-wrap);
     margin: 0 auto;
 }
 

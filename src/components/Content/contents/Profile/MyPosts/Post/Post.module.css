@@ -1,7 +1,7 @@
 .item {
     display: flex;
 
-    width: 600px;
+    width: calc(600/790*100%);
 
     border-radius: 5px;
 
