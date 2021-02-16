@@ -20,7 +20,8 @@ function Contents(props) {
 
     const DialogsWrap = () => {
         return (<Dialogs    className={style.dialogs} 
-                            state={props.state.dialogs}/>)
+                            state={props.state.dialogs}
+                            addMessage={ props.addMessage }/>)
     };
 
     const MusicWrap = () => {

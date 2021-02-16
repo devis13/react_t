@@ -3,13 +3,17 @@ import Message from "./Message/Message";
 import styles from "./Messages.module.css";
 
 const Messages = (props) => {
+    // debugger;
+
 
     let newMessageElement = React.createRef();
 
     let newMessage = () => {
-        let text = newMessageElement.current.value;
 
-        alert(text);
+        debugger;
+        let text = newMessageElement.current.value;
+        props.addMessage(text);
+
     };
 
     const massage = props.state.messageData.map((obj) => {
