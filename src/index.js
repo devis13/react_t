@@ -4,23 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import state, { addMessage, addPost, newMessageValue, newPostValue, renderDom } from './state';
+import store from './state';
 
 let renderEntireTree = (state) => {
   ReactDOM.render(
     <React.StrictMode>
-      <App  state={ state }
-            addPost={ addPost }
-            addMessage={ addMessage }
-            newPostValue={ newPostValue }
-            newMessageValue={ newMessageValue } />
+      <App  state={ store.getState() }
+            addPost={ store.addPost.bind(store)}
+            addMessage={ store.addMessage.bind(store) }
+            newPostValue={ store.newPostValue.bind(store) }
+            newMessageValue={ store.newMessageValue.bind(store) } />
     </React.StrictMode>,
     document.getElementById('root')
   );
 };
 
-renderDom(renderEntireTree);
+store.setSubscriber(renderEntireTree);
 
-renderEntireTree(state);
+renderEntireTree(store.getState());
 
 reportWebVitals();
