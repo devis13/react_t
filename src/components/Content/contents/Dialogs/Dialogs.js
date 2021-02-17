@@ -9,7 +9,8 @@ const Dialogs = (props) => {
                         state={props.state.users}/>
             <Messages className={styles.messages}
                         state={props.state.messages}
-                        addMessage={ props.addMessage }/>
+                        addMessage={ props.addMessage }
+                        newMessageValue={ props.newMessageValue }/>
         </div>
     )
 }

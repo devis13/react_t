@@ -12,7 +12,8 @@ function Contents(props) {
     const ProfileWrap = () => {
         return (<Profile    className={style.profile}
                             state={props.state.profile}
-                            addPost={props.addPost}/>)
+                            addPost={props.addPost}
+                            newPostValue={ props.newPostValue } />)
     };
 
     // userDate={props.userDate}
@@ -21,7 +22,8 @@ function Contents(props) {
     const DialogsWrap = () => {
         return (<Dialogs    className={style.dialogs} 
                             state={props.state.dialogs}
-                            addMessage={ props.addMessage }/>)
+                            addMessage={ props.addMessage }
+                            newMessageValue={ props.newMessageValue } />)
     };
 
     const MusicWrap = () => {

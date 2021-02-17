@@ -21,7 +21,9 @@ function App(props) {
           <Contents calssName="contents" 
                     state={props.state.contents}
                     addPost={props.addPost}
-                    addMessage={ props.addMessage }/>
+                    addMessage={ props.addMessage }
+                    newPostValue={ props.newPostValue }
+                    newMessageValue={ props.newMessageValue }/>
         </div>
       </div>
     </BrowserRouter>

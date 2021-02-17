@@ -37,6 +37,8 @@ const state = {
                     { id: 2, text: "hi" },
                     { id: 3, text: "hi" },
                 ],
+
+                postValue: "",
             },
         },
 
@@ -60,17 +62,32 @@ const state = {
                     { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: true },
                     { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: false },
                 ],
+
+                messageValue: "",
             },
         },
     },
 };
 
 
+export let newPostValue = (text) => {
+    // debugger;
+    state.contents.profile.myPosts.postValue = text;
+
+    renderEntireTree(state)
+};
+
+export let newMessageValue = (text) => {
+    state.contents.dialogs.messages.messageValue = text;
+
+    renderEntireTree(state)
+};
 
 
 
-export let addMessage = (newMessage) => {
+export let addMessage = () => {
     let messageDataArr = state.contents.dialogs.messages.messageData;
+    let newMessage = state.contents.dialogs.messages.messageValue;
 
     messageDataArr.push(
         { 
@@ -80,23 +97,26 @@ export let addMessage = (newMessage) => {
             avtor: false,
         }
     )
+
+    state.contents.dialogs.messages.messageValue = "";
     
     renderEntireTree(state);
 
-}
+};
 
-export let addPost = (newPost) => {
-
-    // debugger;
+export let addPost = () => {
 
     let postDataArr = state.contents.profile.myPosts.postData;
+    let postValue = state.contents.profile.myPosts.postValue;
 
     postDataArr.push(
         {
             id: postDataArr.length + 1,
-            text: newPost,
+            text: postValue,
         }
     )
+
+    state.contents.profile.myPosts.postValue = "";
 
     renderEntireTree(state);
 };
