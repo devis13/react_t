@@ -1,3 +1,5 @@
+import { renderEntireTree } from "./render";
+
 const avPath = "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg";
 
 
@@ -65,21 +67,9 @@ const state = {
 
 
 
-export let addPost = (newPost) => {
-    
-    let postDataArr = state.contents.dialogs.messages.messageData;
 
-    postDataArr.push(
-        {
-            id: postDataArr.length + 1,
-            text: newPost,
-        }
-    )
-};
 
 export let addMessage = (newMessage) => {
-    debugger;
-
     let messageDataArr = state.contents.dialogs.messages.messageData;
 
     messageDataArr.push(
@@ -90,6 +80,25 @@ export let addMessage = (newMessage) => {
             avtor: false,
         }
     )
+    
+    renderEntireTree(state);
+
 }
+
+export let addPost = (newPost) => {
+
+    // debugger;
+
+    let postDataArr = state.contents.profile.myPosts.postData;
+
+    postDataArr.push(
+        {
+            id: postDataArr.length + 1,
+            text: newPost,
+        }
+    )
+
+    renderEntireTree(state);
+};
 
 export default state;

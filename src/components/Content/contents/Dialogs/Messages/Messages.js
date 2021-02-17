@@ -10,10 +10,11 @@ const Messages = (props) => {
 
     let newMessage = () => {
 
-        debugger;
+        // debugger;
         let text = newMessageElement.current.value;
         props.addMessage(text);
 
+        newMessageElement.current.value = "";
     };
 
     const massage = props.state.messageData.map((obj) => {
