@@ -1,7 +1,6 @@
-import { renderEntireTree } from "./render";
-
 const avPath = "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg";
 
+let renderEntireTree;
 
 const state = {
 
@@ -70,14 +69,14 @@ const state = {
 };
 
 
-export let newPostValue = (text) => {
+export const newPostValue = (text) => {
     // debugger;
     state.contents.profile.myPosts.postValue = text;
 
     renderEntireTree(state)
 };
 
-export let newMessageValue = (text) => {
+export const newMessageValue = (text) => {
     state.contents.dialogs.messages.messageValue = text;
 
     renderEntireTree(state)
@@ -85,7 +84,7 @@ export let newMessageValue = (text) => {
 
 
 
-export let addMessage = () => {
+export const addMessage = () => {
     let messageDataArr = state.contents.dialogs.messages.messageData;
     let newMessage = state.contents.dialogs.messages.messageValue;
 
@@ -104,7 +103,7 @@ export let addMessage = () => {
 
 };
 
-export let addPost = () => {
+export const addPost = () => {
 
     let postDataArr = state.contents.profile.myPosts.postData;
     let postValue = state.contents.profile.myPosts.postValue;
@@ -119,6 +118,10 @@ export let addPost = () => {
     state.contents.profile.myPosts.postValue = "";
 
     renderEntireTree(state);
+};
+
+export const renderDom = (observer) => {
+    renderEntireTree = observer;
 };
 
 export default state;
