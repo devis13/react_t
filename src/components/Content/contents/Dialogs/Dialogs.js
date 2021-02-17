@@ -4,13 +4,12 @@ import Messages from "./Messages/Messages";
 
 const Dialogs = (props) => {
     return (
-        <div className={styles.dialogs + " " + props.className}>
-            <Users   className={styles.list}
-                        state={props.state.users}/>
-            <Messages className={styles.messages}
-                        state={props.state.messages}
-                        addMessage={ props.addMessage }
-                        newMessageValue={ props.newMessageValue }/>
+        <div className={ styles.dialogs + " " + props.className }>
+            <Users   className={ styles.list }
+                        state={ props.state.users }/>
+            <Messages className={ styles.messages }
+                        state={ props.state.messages }
+                        dispatch={ props.dispatch } />
         </div>
     )
 }

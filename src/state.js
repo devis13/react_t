@@ -71,23 +71,19 @@ let store = {
         alert("Subscriber not set");
     },
 
-    getState() {
-        return this._state;
-    },
-
-    newPostValue(text) {
+    _updatePostValue(text) {
         this._state.contents.profile.myPosts.postValue = text;
 
         this._subscriber(this._state);
     },
 
-    newMessageValue(text) {
+    _updateMessageValue(text) {
         this._state.contents.dialogs.messages.messageValue = text;
     
         this._subscriber(this._state);
     },
 
-    addMessage() {
+    _addMessage() {
         let messageDataArr = this._state.contents.dialogs.messages.messageData;
         let newMessage = this._state.contents.dialogs.messages.messageValue;
     
@@ -106,7 +102,7 @@ let store = {
     
     },
 
-    addPost() {
+    _addPost() {
 
         let postDataArr = this._state.contents.profile.myPosts.postData;
         let postValue = this._state.contents.profile.myPosts.postValue;
@@ -121,6 +117,32 @@ let store = {
         this._state.contents.profile.myPosts.postValue = "";
     
         this._subscriber(this._state);
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case "UPDATE-POST-VALUE" : 
+                this._updatePostValue(action.text);
+                break;
+            
+            case "UPDATE-MESSAGE-VALUE" : 
+                this._updateMessageValue(action.text);
+                break;
+            
+            case "ADD-MESSAGE" : 
+                this._addMessage();
+                break;
+
+            case "ADD-POST" : 
+                this._addPost();
+                break;
+
+            default: break;
+        };
+    },
+
+    getState() {
+        return this._state;
     },
 
     setSubscriber(observer) {
