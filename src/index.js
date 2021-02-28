@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import store from './state';
+import store from './redux/store';
 
 let renderEntireTree = (state) => {
   ReactDOM.render(
@@ -16,7 +16,7 @@ let renderEntireTree = (state) => {
   );
 };
 
-store.setSubscriber(renderEntireTree);
+store.subscribe(renderEntireTree);
 
 renderEntireTree(store.getState());
 

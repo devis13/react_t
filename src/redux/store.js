@@ -1,3 +1,7 @@
+import dialogsReducer from "./dialogs_reducer";
+import profileReducer from "./profile_resucer";
+import sideBarReducer from "./sideBar_reducer";
+
 const avPath = "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg";
 
 let store = {
@@ -71,81 +75,21 @@ let store = {
         alert("Subscriber not set");
     },
 
-    _updatePostValue(text) {
-        this._state.contents.profile.myPosts.postValue = text;
-
-        this._subscriber(this._state);
-    },
-
-    _updateMessageValue(text) {
-        this._state.contents.dialogs.messages.messageValue = text;
-    
-        this._subscriber(this._state);
-    },
-
-    _addMessage() {
-        let messageDataArr = this._state.contents.dialogs.messages.messageData;
-        let newMessage = this._state.contents.dialogs.messages.messageValue;
-    
-        messageDataArr.push(
-            { 
-                id: messageDataArr.length + 1,
-                avatarPath: avPath,
-                massage: newMessage,
-                avtor: false,
-            }
-        )
-    
-        this._state.contents.dialogs.messages.messageValue = "";
-        
-        this._subscriber(this._state);
-    
-    },
-
-    _addPost() {
-
-        let postDataArr = this._state.contents.profile.myPosts.postData;
-        let postValue = this._state.contents.profile.myPosts.postValue;
-    
-        postDataArr.push(
-            {
-                id: postDataArr.length + 1,
-                text: postValue,
-            }
-        )
-    
-        this._state.contents.profile.myPosts.postValue = "";
-    
-        this._subscriber(this._state);
-    },
-
     dispatch(action) {
-        switch (action.type) {
-            case "UPDATE-POST-VALUE" : 
-                this._updatePostValue(action.text);
-                break;
-            
-            case "UPDATE-MESSAGE-VALUE" : 
-                this._updateMessageValue(action.text);
-                break;
-            
-            case "ADD-MESSAGE" : 
-                this._addMessage();
-                break;
+        this.sideBar = sideBarReducer(this.sideBar, action);
+        this._state.contents.dialogs = dialogsReducer(this._state.contents.dialogs, action);
+        this._state.contents.profile = profileReducer(this._state.contents.profile, action);
 
-            case "ADD-POST" : 
-                this._addPost();
-                break;
-
-            default: break;
-        };
+        this._subscriber(this._state);
     },
+
+    
 
     getState() {
         return this._state;
     },
 
-    setSubscriber(observer) {
+    subscribe(observer) {
         this._subscriber = observer;
     },
 };
