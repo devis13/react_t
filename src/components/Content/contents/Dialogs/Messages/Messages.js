@@ -1,21 +1,19 @@
 import React from 'react';
 import Message from "./Message/Message";
 import styles from "./Messages.module.css";
+import { updateMessageValueActionCreator, addMessageActionCreator } from '../../../../../redux/dialogs_reducer';
+
 
 const Messages = (props) => {
-    let newMessageElement = React.createRef();
+    const newMessageElement = React.createRef();
 
     const onChangeValue = () => {
-        props.dispatch({
-            type: "UPDATE-MESSAGE-VALUE",
-            text: newMessageElement.current.value,
-        });
+        const text = newMessageElement.current.value;
+        props.dispatch(updateMessageValueActionCreator(text));
     }
 
     const addMessage = () => {
-        props.dispatch({
-            type: "ADD-MESSAGE",
-        });
+        props.dispatch(addMessageActionCreator());
     }
 
     const massage = props.state.messageData.map((obj) => {

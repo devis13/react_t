@@ -1,22 +1,20 @@
 import React from 'react';
 import Post from "./Post/Post";
 import myPosts from "./MyPosts.module.css";
+import { updatePostValueActionCreator, addPostActionCreator } from '../../../../../redux/profile_reducer';
 
 
 function MyPosts(props) {    
     const newPostElement =  React.createRef();
+    
 
     const onChangeValue = () => {
-        props.dispatch({
-            type: "UPDATE-POST-VALUE",
-            text: newPostElement.current.value,
-        });
+        const text = newPostElement.current.value;
+        props.dispatch(updatePostValueActionCreator(text));
     } 
 
     const addPost = () => {
-        props.dispatch({
-            type: "ADD-POST",
-        });
+        props.dispatch(addPostActionCreator());
     }
 
     const post = props.state.postData.map((obj) => {

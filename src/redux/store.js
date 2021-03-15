@@ -1,5 +1,5 @@
 import dialogsReducer from "./dialogs_reducer";
-import profileReducer from "./profile_resucer";
+import profileReducer from "./profile_reducer";
 import sideBarReducer from "./sideBar_reducer";
 
 const avPath = "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg";
