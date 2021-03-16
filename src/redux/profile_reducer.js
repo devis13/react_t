@@ -1,13 +1,28 @@
-const profileReducer = (state, action) => {
+const updatePostValue = "UPDATE-POST-VALUE";
+const addPost = "ADD-POST";
+
+const initialState = {
+    myPosts: {
+        postData: [
+            { id: 1, text: "hi" },
+            { id: 2, text: "hi" },
+            { id: 3, text: "hi" },
+        ],
+
+        postValue: "",
+    },
+};
+
+const profileReducer = (state = initialState, action) => {
     debugger;
 
     switch (action.type) {
-        case "UPDATE-POST-VALUE": 
+        case updatePostValue: 
             state.myPosts.postValue = action.text;
 
             return state;
 
-        case "ADD-POST": 
+        case addPost: 
             let postDataArr = state.myPosts.postData;
             let postValue = state.myPosts.postValue;
         
@@ -31,13 +46,13 @@ const profileReducer = (state, action) => {
 
 export const updatePostValueActionCreator = (text) => {
     return {
-        type: "UPDATE-POST-VALUE",
+        type: updatePostValue,
         text: text,
     };
 };
 
 export const addPostActionCreator = () => {
-    return { type: "ADD-POST" };
+    return { type: addPost };
 };
 
 export default profileReducer;
