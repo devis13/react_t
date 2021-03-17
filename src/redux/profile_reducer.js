@@ -14,7 +14,7 @@ const initialState = {
 };
 
 const profileReducer = (state = initialState, action) => {
-    debugger;
+    // debugger;
 
     switch (action.type) {
         case updatePostValue: 
@@ -37,11 +37,8 @@ const profileReducer = (state = initialState, action) => {
 
             return state;
 
-        default:    
-            return state;
+        default: return state;
     };
-
-    return state;
 }
 
 export const updatePostValueActionCreator = (text) => {

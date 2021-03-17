@@ -8,15 +8,11 @@ import style from "./Content.module.css";
 
 function Contents(props) {
     const ProfileWrap = () => {
-        return (<Profile    className={ style.profile  }
-                            state={ props.state.profile }
-                            dispatch={ props.dispatch }/>)
+        return (<Profile className={ style.profile  } store={ props.store }/>)
     };
 
     const DialogsWrap = () => {
-        return (<Dialogs    className={ style.dialogs } 
-                            state={ props.state.dialogs }
-                            dispatch={ props.dispatch }/>)
+        return (<Dialogs className={ style.dialogs } store={ props.store }/>)
     };
 
     const MusicWrap = () => {

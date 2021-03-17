@@ -3,7 +3,9 @@ import styles from "./Users.module.css";
 
 const Users = (props) => {
 
-    const user = props.state.userData.map((obj) => <User name={obj.name} id={obj.id} className={styles.item}/> )
+    const user = props.userData.map((obj) => <User  name={obj.name}
+                                                    id={obj.id} 
+                                                    className={styles.item}/> )
 
     return (
         <div className={styles.users + " " + props.className}>

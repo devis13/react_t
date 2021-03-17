@@ -3,7 +3,7 @@ import styles from "./Friends.module.css";
 
 const Friends = (props) => {
 
-    const friendsDate = props.state.friendsDate.map((obj) => {
+    const friendsDate = props.friendsDate.map((obj) => {
         return (<Friend className={styles.friend} 
                         id={obj.id}  
                         avatarPath={obj.avatarPath} 

@@ -8,17 +8,17 @@ import SideBar from './components/SideBar/SideBar';
 
 
 function App(props) {
+  const state = props.store.getState();
+
   return (
     <BrowserRouter>
       <div className="main_container">
         <Header className="header" />
 
         <div className="main_block">
-          <SideBar className="sideBar" state={ props.state.sideBar } />
+          <SideBar className="sideBar" state={ state.sideBar } />
 
-          <Contents calssName="contents"
-                    state={ props.state.contents }
-                    dispatch={ props.dispatch }/>
+          <Contents calssName="contents" store={ props.store }/>
         </div>
       </div>
     </BrowserRouter>

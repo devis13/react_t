@@ -1,4 +1,4 @@
-import MyPosts from "./MyPosts/MyPosts";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import styles from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
@@ -6,9 +6,7 @@ function Profile(props) {
     return (
         <div className={ styles.profile + " " + props.className }>
             <ProfileInfo className={ styles.profileInfo } />
-            <MyPosts    className={ styles.myPosts }
-                        state={ props.state.myPosts }
-                        dispatch={ props.dispatch } />
+            <MyPostsContainer className={ styles.myPosts } store={ props.store } />
         </div>
     )
 }

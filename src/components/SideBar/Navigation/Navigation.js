@@ -3,7 +3,7 @@ import style from "./Navigation.module.css";
 
 function Navigation(props) {
 
-    const navLink = props.state.navData.map((obj) => {
+    const navLink = props.navData.map((obj) => {
         return (<li className={style.elem}>
             <NavLink    to={obj.path} 
                         id={obj.id} 
