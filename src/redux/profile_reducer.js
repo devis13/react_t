@@ -15,16 +15,19 @@ const initialState = {
 
 const profileReducer = (state = initialState, action) => {
     // debugger;
+    let stateCopy = {...state};
+    stateCopy.myPosts = {...state.myPosts}
 
     switch (action.type) {
         case updatePostValue: 
-            state.myPosts.postValue = action.text;
+            stateCopy.myPosts.postValue = action.text;
 
-            return state;
+            return stateCopy;
 
         case addPost: 
-            let postDataArr = state.myPosts.postData;
-            let postValue = state.myPosts.postValue;
+            stateCopy.myPosts.postData = [...state.myPosts.postData];
+            let postDataArr = stateCopy.myPosts.postData;
+            let postValue = stateCopy.myPosts.postValue;
         
             postDataArr.push(
                 {
@@ -33,11 +36,11 @@ const profileReducer = (state = initialState, action) => {
                 }
             )
         
-            state.myPosts.postValue = "";
+            stateCopy.myPosts.postValue = "";
 
-            return state;
+            return stateCopy;
 
-        default: return state;
+        default: return stateCopy;
     };
 }
 

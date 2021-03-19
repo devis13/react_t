@@ -12,7 +12,7 @@ const initialState = {
     },
 
     friends: {
-        friendsDate: [
+        friendsData: [
             {id: 1, avatarPath: avPath, name: "Andrey"},
             {id: 1, avatarPath: avPath, name: "Andrey"},
             {id: 1, avatarPath: avPath, name: "Andrey"},

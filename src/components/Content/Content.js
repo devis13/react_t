@@ -7,25 +7,11 @@ import Settings from "./contents/Settings/Settings";
 import style from "./Content.module.css";
 
 function Contents(props) {
-    const ProfileWrap = () => {
-        return (<Profile className={ style.profile  } store={ props.store }/>)
-    };
-
-    const DialogsWrap = () => {
-        return (<Dialogs className={ style.dialogs } store={ props.store }/>)
-    };
-
-    const MusicWrap = () => {
-        return (<Music className={ style.music } />)
-    };
-
-    const NewsWrap = () => {
-        return (<News className={ style.news } />)
-    };
-
-    const SettingsWrap = () => {
-        return (<Settings className={ style.settings } />)
-    };
+    const ProfileWrap   = () => <Profile className={ style.profile  }/>;
+    const DialogsWrap   = () => <Dialogs className={ style.dialogs }/>;
+    const MusicWrap     = () => <Music className={ style.music } />;
+    const NewsWrap      = () => <News className={ style.news } />;
+    const SettingsWrap  = () => <Settings className={ style.settings } />;
 
 
     return (

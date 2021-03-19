@@ -29,14 +29,17 @@ const initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
     const avPath = "https://i.pinimg.com/originals/0c/a9/e2/0ca9e28dcb12dc698cfd2beda6d6fa64.jpg";
+    let stateCopy = {...state};
+    stateCopy.messages = {...state.messages};
 
     switch (action.type) {       
-        case updateMessageValue : 
-            state.messages.messageValue = action.text;
-            return state;
+        case updateMessageValue :
+            stateCopy.messages.messageValue = action.text;
+            return stateCopy;
 
         case addMessage : 
-            let messageDataArr = state.messages.messageData;
+            stateCopy.messages.messageData = [...state.messages.messageData];
+            let messageDataArr = stateCopy.messages.messageData;
             let newMessage = state.messages.messageValue;
         
             messageDataArr.push(
@@ -48,12 +51,12 @@ const dialogsReducer = (state = initialState, action) => {
                 }
             )
 
-            state.messages.messageValue = "";
+            stateCopy.messages.messageValue = "";
 
-            return state;
+            return stateCopy;
 
         default: 
-            return state; 
+            return stateCopy; 
     };
 }
 

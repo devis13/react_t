@@ -10,7 +10,6 @@ function Navigation(props) {
                         className={style.link} 
                         activeClassName={style.active}
             >
-
                 {obj.title}
             </NavLink>
         </li>)
