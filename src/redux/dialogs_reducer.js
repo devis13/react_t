@@ -17,10 +17,10 @@ const initialState = {
             { id: 1, avatarPath: avPath, massage: "Eu voluptate eu excepteur aliquip magna veniam nisi culpa cillum consectetur."
                             + "Consectetu laboris eu non laboris adipisicing nostrud nostrud laboris nisi ullamco dolore reprehenderit.", avtor: false},
             { id: 2, avatarPath: avPath, massage: "Hello!!!", avtor: true },
-            { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: false },
-            { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: false },
-            { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: true },
-            { id: 3, avatarPath: avPath, massage: "Hello!!!", avtor: false },
+            { id: 4, avatarPath: avPath, massage: "Hello!!!", avtor: false },
+            { id: 5, avatarPath: avPath, massage: "Hello!!!", avtor: false },
+            { id: 6, avatarPath: avPath, massage: "Hello!!!", avtor: true },
+            { id: 7, avatarPath: avPath, massage: "Hello!!!", avtor: false },
         ],
 
         messageValue: "",

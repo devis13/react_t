@@ -5,6 +5,7 @@ const Friends = (props) => {
 
     const friendsData = props.friendsData.map((obj) => {
         return (<Friend className={styles.friend} 
+                        key={ obj.id }
                         id={obj.id}  
                         avatarPath={obj.avatarPath} 
                         name={obj.name} />)

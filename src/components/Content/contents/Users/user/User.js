@@ -9,7 +9,11 @@ const User = (props) => {
     return (
         <div className={styles.user + " " + props.className}>
             <div className={styles._center}>
-                <div className={ styles.avatarWrap }><img className = { styles.avatarImg } src={ props.usersImg } alt="userAvatar"/></div>
+                <div className={ styles.avatarWrap }>
+                    <img    className = { styles.avatarImg } 
+                            src={ props.smallPhotos || props.usersImg } 
+                            alt="userAvatar"/>
+                </div>
                 <button onClick={onClick}
                         className={ styles.btn }>
                             { props.followed ? "Follow" : "Unfollow" }
@@ -21,7 +25,7 @@ const User = (props) => {
                     <p>{ props.status }</p>
                 </div>
 
-                <p className={ styles.location }>{ props.location.country },<br/> { props.location.city }</p>
+                <p className={ styles.location }>{ "props.location.country" },<br/> { "props.location.city" }</p>
             </div>
         </div>
     )

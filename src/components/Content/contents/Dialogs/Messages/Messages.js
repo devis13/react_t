@@ -16,6 +16,7 @@ const Messages = (props) => {
 
     const massage = props.messageData.map((obj) => {
         return <Message className={ styles.message } 
+                        key={ obj.id } 
                         id={ obj.id }  
                         text={ obj.massage } 
                         avtor={ obj.avtor }
