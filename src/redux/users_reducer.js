@@ -1,7 +1,8 @@
-const changeFollow = "CHANGE-FOLLOW";
-const createUsers = "CREATE-USERS";
-const deleteUsers = "DELETE-USERS";
-const changePagesCount = "CHANGE-PAGES-COUNT";
+const CHANGE_FOLLOW = "CHANGE-FOLLOW";
+const CREATE_USERS = "CREATE-USERS";
+const DELETE_USERS = "DELETE-USERS";
+const CHANGE_PAGES_COUNT = "CHANGE-PAGES-COUNT";
+const CHANGE_CURRENT_PAGE = "CHANGE-CURRENT-PAGE";
 
 
 const initialState = {
@@ -9,7 +10,7 @@ const initialState = {
     pageSize: 5,
     totalUsersCount: 20,
     pagesCount: [],
-    currentPage: 4,
+    currentPage: 1,
 
 };
 
@@ -18,19 +19,19 @@ const usersReducer = (state = initialState, action) => {
     let stateCopy = { ...state };
 
     switch (action.type) {
-        case changeFollow:
+        case CHANGE_FOLLOW:
             stateCopy.usersData = [...state.usersData];
             stateCopy.usersData[action.id].followed = !stateCopy.usersData[action.id].followed;
 
             return stateCopy;
         
-        case createUsers:
-            return {...state, usersData: [...state.usersData, ...action.usersData]};
-
-        case deleteUsers:
+        case CREATE_USERS:
             return {...state, usersData: [...action.usersData]};
 
-        case changePagesCount:
+        case DELETE_USERS:
+            return {...state, usersData: [...action.usersData]};
+
+        case CHANGE_PAGES_COUNT:
             stateCopy.totalUsersCount = action.totalUsersCount;
             stateCopy.pagesCount = [...state.pagesCount];
 
@@ -46,6 +47,11 @@ const usersReducer = (state = initialState, action) => {
             };
     
             return stateCopy;
+        
+        case CHANGE_CURRENT_PAGE: 
+            stateCopy.currentPage = action.currentPage;
+            
+            return stateCopy;
 
         default: return state;
     };
@@ -53,29 +59,36 @@ const usersReducer = (state = initialState, action) => {
 
 export const changeFollowAC = (index) => {
     return {
-        type: changeFollow,
+        type: CHANGE_FOLLOW,
         id: index,
     };
 };
 
 export const createUsersAC = (arr) => {
     return {
-        type: createUsers,
+        type: CREATE_USERS,
         usersData: arr,
     };
 };
 
 export const deleteUsersAC = () => {
     return {
-        type: deleteUsers,
+        type: DELETE_USERS,
         usersData: [],
     }
 }
 
 export const changePagesCountAC = (totalUsersCount) => {
     return {
-        type: changePagesCount,
+        type: CHANGE_PAGES_COUNT,
         totalUsersCount: totalUsersCount,
+    }
+}
+
+export const changeCurrentPageAC = (currentPage) => {
+    return {
+        type: CHANGE_CURRENT_PAGE,
+        currentPage: currentPage,
     }
 }
 

@@ -5,6 +5,13 @@ import usersImg from "../../../../img/user-img.png";
 import React from "react";
 
 class Users extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.onClick = this.onClick.bind(this);
+    }
+
     componentDidMount() {
         if(this.props.usersData.length === 0){
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
@@ -15,11 +22,23 @@ class Users extends React.Component {
         }
     };
 
+    onClick(page) {
+        this.props.changeCurrentPage(page);
+        // debugger;
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`)
+            .then((respons) => {
+                this.props.createUsers(respons.data.items);
+                // this.props.changePagesCount(respons.data.totalCount);
+            })
+    }
+
+
+
     render() {
 
-        let pages = this.props.pagesCount.map((obj) => {
+        let pages = this.props.pagesCount.map((val) => {
         return (
-            <span   className={`${styles.pageNumber}  ${styles.currentPage}`}>{ obj }</span>
+            <button onClick={ e => this.onClick(val, e) } className={`${styles.pageNumber}  ${this.props.currentPage === val && styles.currentPage}`}>{ val }</button>
         );}
         );
 
