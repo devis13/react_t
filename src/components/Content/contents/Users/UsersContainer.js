@@ -1,11 +1,54 @@
+import * as axios from "axios";
+import React from 'react';
 import { connect } from 'react-redux';
-import { changeCurrentPageAC, changeFollowAC, changePagesCountAC, createUsersAC, deleteUsersAC } from '../../../../redux/users_reducer';
+import { changeCurrentPage, changeFollow, changePagesCount, createUsers, deleteUsers } from '../../../../redux/users_reducer';
 import Users from './Users';
+
+class UsersAPIContainer extends React.Component {
+    
+
+    constructor(props) {
+        super(props);
+
+        this.onClick = this.onClick.bind(this);
+    }
+
+    componentDidMount() {
+        if(this.props.usersData.length === 0){
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
+            .then((respons) => {
+                this.props.createUsers(respons.data.items);
+                this.props.changePagesCount(respons.data.totalCount);
+            })
+        }
+    };
+
+    onClick(page) {
+        this.props.changeCurrentPage(page);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`)
+            .then((respons) => {
+                this.props.createUsers(respons.data.items);
+            })
+    }
+
+
+
+    render() {
+        return (
+            <Users  onClick={ this.onClick }
+                    currentPage={ this.props.currentPage }
+                    pagesCount={ this.props.pagesCount }
+                    usersData={ this.props.usersData }
+                    onChangeFollow={ this.props.changeFollow }
+            />
+        )
+    };
+}
 
 let mapStateToProps = (state, ownProps) => {
 
     const usersState = state.contents.users
-    // debugger;
+
     return {
         className: ownProps.className,
         usersData: usersState.usersData,
@@ -18,30 +61,16 @@ let mapStateToProps = (state, ownProps) => {
     
 };
 
-let mapDispatchToProps = (dispatch) => {
-
-    return {
-        onChangeFollow: (index) => {
-            dispatch(changeFollowAC(index));
-        },
-        createUsers: (arr) => {
-            dispatch(createUsersAC(arr));
-        },
-        deleteUsers: () => {
-            dispatch(deleteUsersAC());
-        },
-        changePagesCount: (totalUsersCount) => {
-            dispatch(changePagesCountAC(totalUsersCount));
-        },
-
-        changeCurrentPage: (currentPage) => {
-            dispatch(changeCurrentPageAC (currentPage));
-        },
-    }
+let mapDispatchToPropsObj = {
+        changeFollow,
+        createUsers,
+        deleteUsers,
+        changePagesCount,
+        changeCurrentPage,
 };
 
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToPropsObj)(UsersAPIContainer);
 
 
 export default UsersContainer;

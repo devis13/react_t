@@ -57,35 +57,35 @@ const usersReducer = (state = initialState, action) => {
     };
 }
 
-export const changeFollowAC = (index) => {
+export const changeFollow = (index) => {
     return {
         type: CHANGE_FOLLOW,
         id: index,
     };
 };
 
-export const createUsersAC = (arr) => {
+export const createUsers = (arr) => {
     return {
         type: CREATE_USERS,
         usersData: arr,
     };
 };
 
-export const deleteUsersAC = () => {
+export const deleteUsers = () => {
     return {
         type: DELETE_USERS,
         usersData: [],
     }
 }
 
-export const changePagesCountAC = (totalUsersCount) => {
+export const changePagesCount = (totalUsersCount) => {
     return {
         type: CHANGE_PAGES_COUNT,
         totalUsersCount: totalUsersCount,
     }
 }
 
-export const changeCurrentPageAC = (currentPage) => {
+export const changeCurrentPage = (currentPage) => {
     return {
         type: CHANGE_CURRENT_PAGE,
         currentPage: currentPage,
