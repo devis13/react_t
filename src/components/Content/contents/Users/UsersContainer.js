@@ -1,7 +1,7 @@
 import * as axios from "axios";
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeCurrentPage, changeFollow, changePagesCount, createUsers, deleteUsers } from '../../../../redux/users_reducer';
+import { changeCurrentPage, changeFollow, changePagesCount, createUsers, deleteUsers, changeLoading } from '../../../../redux/users_reducer';
 import Users from './Users';
 
 class UsersAPIContainer extends React.Component {
@@ -25,8 +25,10 @@ class UsersAPIContainer extends React.Component {
 
     onClick(page) {
         this.props.changeCurrentPage(page);
+        this.props.changeLoading();
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`)
             .then((respons) => {
+                this.props.changeLoading();
                 this.props.createUsers(respons.data.items);
             })
     }
@@ -37,6 +39,7 @@ class UsersAPIContainer extends React.Component {
         return (
             <Users  onClick={ this.onClick }
                     currentPage={ this.props.currentPage }
+                    loading={ this.props.loading }
                     pagesCount={ this.props.pagesCount }
                     usersData={ this.props.usersData }
                     onChangeFollow={ this.props.changeFollow }
@@ -57,6 +60,7 @@ let mapStateToProps = (state, ownProps) => {
         pageSize: usersState.pageSize,
         totalUsersCount: usersState.totalUsersCount,
         pagesCount: usersState.pagesCount,
+        loading: usersState.loading,
     }
     
 };
@@ -67,6 +71,7 @@ let mapDispatchToPropsObj = {
         deleteUsers,
         changePagesCount,
         changeCurrentPage,
+        changeLoading,
 };
 
 

@@ -2,6 +2,7 @@ import User from "./user/User";
 import styles from "./Users.module.scss"
 import usersImg from "../../../../img/user-img.png";
 import React from "react";
+import loadingImg from "../../../../img/Spinner-1s-200px.gif"
 
 
 const Users = (props) => {
@@ -32,6 +33,7 @@ const Users = (props) => {
             <div className={styles.pagesCount}>
                 {pages}
             </div>
+            <img src={props.loading ? loadingImg : undefined} className={styles.loading + " " + props.loading && styles.loadingDisplayBlock } alt=""/>
             { users}
         </div>
     )

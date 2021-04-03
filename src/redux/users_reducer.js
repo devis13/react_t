@@ -3,6 +3,7 @@ const CREATE_USERS = "CREATE-USERS";
 const DELETE_USERS = "DELETE-USERS";
 const CHANGE_PAGES_COUNT = "CHANGE-PAGES-COUNT";
 const CHANGE_CURRENT_PAGE = "CHANGE-CURRENT-PAGE";
+const CHANGE_LOADING = "CHANGE-LOADING";
 
 
 const initialState = {
@@ -11,7 +12,7 @@ const initialState = {
     totalUsersCount: 20,
     pagesCount: [],
     currentPage: 1,
-
+    loading: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -40,10 +41,6 @@ const usersReducer = (state = initialState, action) => {
             for(let i = 1; i <= totalPageCount; i++) {
 
                 stateCopy.pagesCount.push(i);
-                // stateCopy.pagesCount.push({
-                //     id: i,
-                //     page: i,
-                // });
             };
     
             return stateCopy;
@@ -51,6 +48,10 @@ const usersReducer = (state = initialState, action) => {
         case CHANGE_CURRENT_PAGE: 
             stateCopy.currentPage = action.currentPage;
             
+            return stateCopy;
+
+        case CHANGE_LOADING:
+            stateCopy.loading = !stateCopy.loading;
             return stateCopy;
 
         default: return state;
@@ -89,6 +90,12 @@ export const changeCurrentPage = (currentPage) => {
     return {
         type: CHANGE_CURRENT_PAGE,
         currentPage: currentPage,
+    }
+}
+
+export const changeLoading = () => {
+    return {
+        type: CHANGE_LOADING,
     }
 }
 
