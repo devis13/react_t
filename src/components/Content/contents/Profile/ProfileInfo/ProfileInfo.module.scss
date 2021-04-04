@@ -1,0 +1,97 @@
+.banner {
+    margin-bottom: 10px;
+}
+
+.banner img{
+    max-width: 100%;
+
+    vertical-align: bottom;
+}
+
+.wrapInfo {
+    display: flex;
+
+    margin-bottom: 20px;
+}
+
+.avatar {
+    margin-right: 15px;
+}
+
+.avatar img {
+    vertical-align: bottom;
+}
+
+.info p {
+    margin-bottom: 10px;
+}
+
+.name {
+    margin-bottom: 5px;
+
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+.aboutMe {
+    margin-bottom: 15px !important;
+    padding-left: 10px;
+
+    text-transform: lowercase;
+}
+
+.education {
+    margin-bottom: 20px !important;
+}
+
+.jobStatus {
+    margin-bottom: 5px !important;
+}
+
+.button {
+    width: 235px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+
+    background-color: rgba($color: #c9bfbf, $alpha: 1.0);
+
+    &:hover {
+        background-color: rgba($color: #c9bfbf, $alpha: 0.8);
+    }
+
+    &:focus, &:active {
+        outline: none;
+    }
+}
+
+.siteList {
+    display: flex;
+
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    width: 475px;
+    height: 150px;
+    margin: 0;
+    padding: 0;
+
+    list-style-type: none;
+
+    overflow: hidden;
+    transition: all ease 0.5s;
+
+    li {
+        margin-bottom: 5px;
+        padding: 5px;   
+
+        background-color: rgba($color: #000000, $alpha: 0.2);
+        
+        border-radius: 5px;
+    }
+}
+
+._hideDisplay {
+    height: 0;
+}

@@ -5,7 +5,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 function Profile(props) {
     return (
         <div className={ styles.profile + " " + props.className }>
-            <ProfileInfo className={ styles.profileInfo }/>
+            <ProfileInfo { ...props }/>
             <MyPostsContainer className={ styles.myPosts }/>
         </div>
     )

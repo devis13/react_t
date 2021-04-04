@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styles from "./User.module.scss";
 
 const User = (props) => {
@@ -9,11 +10,13 @@ const User = (props) => {
     return (
         <div className={styles.user + " " + props.className}>
             <div className={styles._center}>
-                <div className={ styles.avatarWrap }>
-                    <img    className = { styles.avatarImg } 
-                            src={ props.smallPhotos || props.usersImg } 
-                            alt="userAvatar"/>
-                </div>
+                <NavLink to={`/profile/${props.id}`}>
+                    <div className={ styles.avatarWrap }>
+                        <img    className = { styles.avatarImg } 
+                                src={ props.smallPhotos || props.usersImg } 
+                                alt="userAvatar"/>
+                    </div>
+                </NavLink>
                 <button onClick={onClick}
                         className={ styles.btn }>
                             { props.followed ? "Follow" : "Unfollow" }

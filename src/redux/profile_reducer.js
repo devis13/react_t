@@ -1,7 +1,11 @@
-const updatePostValue = "UPDATE-POST-VALUE";
-const addPost = "ADD-POST";
+const UPDATE_POST_VALUE = "UPDATE-POST-VALUE";
+const ADD_POST = "ADD-POST";
+const CREATE_PROFILE = "CREATE-PROFILE"
+const CHANGE_HIDEN_CONTACTS = "CHANGE-HIDEN-CONTACTS";
 
 const initialState = {
+    profileData: null,
+    hiddenContacts: false,
     myPosts: {
         postData: [
             { id: 1, text: "hi" },
@@ -19,12 +23,12 @@ const profileReducer = (state = initialState, action) => {
     stateCopy.myPosts = {...state.myPosts}
 
     switch (action.type) {
-        case updatePostValue: 
+        case UPDATE_POST_VALUE: 
             stateCopy.myPosts.postValue = action.text;
 
             return stateCopy;
 
-        case addPost: 
+        case ADD_POST: 
             stateCopy.myPosts.postData = [...state.myPosts.postData];
             let postDataArr = stateCopy.myPosts.postData;
             let postValue = stateCopy.myPosts.postValue;
@@ -39,20 +43,46 @@ const profileReducer = (state = initialState, action) => {
             stateCopy.myPosts.postValue = "";
 
             return stateCopy;
+        
+        case CREATE_PROFILE:
+            // debugger;
+            stateCopy.profileData = {...action.profileData};
+                
+            return stateCopy;
+
+        case CHANGE_HIDEN_CONTACTS:
+            // debugger;
+            stateCopy.hiddenContacts = !stateCopy.hiddenContacts;
+                
+            return stateCopy;
 
         default: return stateCopy;
     };
 }
 
-export const updatePostValueActionCreator = (text) => {
+export const createProfile = (profileData) => {
+    // debugger;
     return {
-        type: updatePostValue,
+        type: CREATE_PROFILE,
+        profileData: profileData,
+    }
+};
+
+export const changeHiddenContacts = () => {
+    return {
+        type: CHANGE_HIDEN_CONTACTS,
+    }
+};
+
+export const updatePostValue = (text) => {
+    return {
+        type: UPDATE_POST_VALUE,
         text: text,
     };
 };
 
-export const addPostActionCreator = () => {
-    return { type: addPost };
+export const addPost = () => {
+    return { type: ADD_POST };
 };
 
 export default profileReducer;

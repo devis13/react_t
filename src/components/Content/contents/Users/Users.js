@@ -2,7 +2,8 @@ import User from "./user/User";
 import styles from "./Users.module.scss"
 import usersImg from "../../../../img/user-img.png";
 import React from "react";
-import loadingImg from "../../../../img/Spinner-1s-200px.gif"
+import Preloader from "../../../Preloader/Preloader";
+
 
 
 const Users = (props) => {
@@ -25,7 +26,8 @@ const Users = (props) => {
             fullName={obj.name} W
             status={"obj.status"}
             location={obj.location}
-            onChangeFollow={props.onChangeFollow} />;
+            onChangeFollow={props.onChangeFollow}
+            loading={props.loading} />;
     });
     // debugger;
     return (
@@ -33,7 +35,9 @@ const Users = (props) => {
             <div className={styles.pagesCount}>
                 {pages}
             </div>
-            <img src={props.loading ? loadingImg : undefined} className={styles.loading + " " + props.loading && styles.loadingDisplayBlock } alt=""/>
+            <div className={`${styles.preloaderWrap}  ${props.loading ? styles.preloaderWrapDB : null}` }>
+                {props.loading ? <Preloader /> : null}
+            </div>
             { users}
         </div>
     )

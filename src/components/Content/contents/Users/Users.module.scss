@@ -33,10 +33,13 @@
     outline: none;
 }
 
-.loading {
+
+.preloaderWrap {
     display: none;
+    width: 100px;
+    height: 100px;
 }
 
-.loadingDisplayBlock {
+.preloaderWrapDB {
     display: block;
 }

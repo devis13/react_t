@@ -15,8 +15,10 @@ class UsersAPIContainer extends React.Component {
 
     componentDidMount() {
         if(this.props.usersData.length === 0){
+            this.props.changeLoading();
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
             .then((respons) => {
+                this.props.changeLoading();
                 this.props.createUsers(respons.data.items);
                 this.props.changePagesCount(respons.data.totalCount);
             })
@@ -24,6 +26,7 @@ class UsersAPIContainer extends React.Component {
     };
 
     onClick(page) {
+        // debugger;
         this.props.changeCurrentPage(page);
         this.props.changeLoading();
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`)
@@ -32,8 +35,6 @@ class UsersAPIContainer extends React.Component {
                 this.props.createUsers(respons.data.items);
             })
     }
-
-
 
     render() {
         return (
