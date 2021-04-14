@@ -26,8 +26,9 @@ const Users = (props) => {
             fullName={obj.name} W
             status={"obj.status"}
             location={obj.location}
-            onChangeFollow={props.onChangeFollow}
-            loading={props.loading} />;
+            changeFollow={props.changeFollow}
+            loading={props.loading}
+            lockedSubscribeBtn={ props.lockedSubscribeBtn }/>;
     });
     // debugger;
     return (

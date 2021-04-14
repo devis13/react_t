@@ -2,11 +2,6 @@ import { NavLink } from "react-router-dom";
 import styles from "./User.module.scss";
 
 const User = (props) => {
-
-    const onClick = () => {
-        props.onChangeFollow(props.index);
-    }
-
     return (
         <div className={styles.user + " " + props.className}>
             <div className={styles._center}>
@@ -17,7 +12,7 @@ const User = (props) => {
                                 alt="userAvatar"/>
                     </div>
                 </NavLink>
-                <button onClick={onClick}
+                <button  disabled={props.lockedSubscribeBtn.some(id => id == props.id)} onClick={() => { props.changeFollow(props.index, props.id, props.followed) }}
                         className={ styles.btn }>
                             { props.followed ? "Follow" : "Unfollow" }
                 </button>

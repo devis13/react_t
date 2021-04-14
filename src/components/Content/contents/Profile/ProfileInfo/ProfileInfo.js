@@ -1,3 +1,4 @@
+import Preloader from "../../../../Preloader/Preloader";
 import styles from "./ProfileInfo.module.scss";
 
 function ProfileInfo(props) {
@@ -13,6 +14,9 @@ function ProfileInfo(props) {
 
     return (
         <div className={styles.profileInfo + " " + props.className}>
+            <div className={`${styles.preloaderWrap}  ${props.loading ? styles.preloaderWrapDB : null}` }>
+                {props.loading ? <Preloader/> : null }
+            </div>
             <div className={styles.banner}>
                 <img  src="https://d2afajug0qougp.cloudfront.net/wp-content/uploads/2017/12/21215942/pexels-photo-250177-800x200.jpeg" alt="Новый год!!" />
             </div>

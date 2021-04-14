@@ -1,17 +1,19 @@
-import * as axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { createProfile, changeHiddenContacts } from "../../../../redux/profile_reducer";
+import { getProfile } from "../../../../api/api";
+import { createProfile, changeHiddenContacts, changeProfileLoading } from "../../../../redux/profile_reducer";
 import Profile from "./Profile";
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
             let userId = this.props.match.params.userId ? this.props.match.params.userId : 2;
+            this.props.changeProfileLoading();
 
-            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+            getProfile(userId)
                 .then((response) => {
+                    this.props.changeProfileLoading();
                     this.props.createProfile(response.data)
                 })
     };
@@ -20,24 +22,27 @@ class ProfileContainer extends React.Component {
         return <Profile className={this.props.className}
                         profileData={this.props.profileData}
                         hiddenContacts={this.props.hiddenContacts}
-                        changeHiddenContacts={this.props.changeHiddenContacts}/>;
+                        changeHiddenContacts={this.props.changeHiddenContacts}
+                        loading={ this.props.loading }/>;
     };
 }
 
 let mapStateToProps = (state, ownProps) => {
-
-    const profileData = state.contents.profile.profileData;
+    const profileState = state.contents.profile;
+    const profileData = profileState.profileData;
 
     return {
         className: ownProps.className,
         profileData: profileData,
-        hiddenContacts: state.contents.profile.hiddenContacts
+        hiddenContacts: profileState.hiddenContacts,
+        loading: profileState.loading,
     }
 };
 
 let mapDispatchToPropsObj = {
     createProfile,
     changeHiddenContacts,
+    changeProfileLoading,
 };
 
 const withUrlProfileComponent = withRouter(ProfileContainer);

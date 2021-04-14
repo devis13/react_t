@@ -1,12 +1,20 @@
-import * as axios from "axios";
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeCurrentPage, changeFollow, changePagesCount, createUsers, deleteUsers, changeLoading } from '../../../../redux/users_reducer';
+import { getUsers, follow, unfollow } from "../../../../api/api";
+
+import {    changeCurrentPage,
+            changeFollow, 
+            changePagesCount, 
+            createUsers, 
+            deleteUsers, 
+            changeLoading, 
+            toggleSubscribeInProgres,
+            changeLockedSubscribeBtn} from '../../../../redux/users_reducer';
+
 import Users from './Users';
 
 class UsersAPIContainer extends React.Component {
     
-
     constructor(props) {
         super(props);
 
@@ -16,7 +24,7 @@ class UsersAPIContainer extends React.Component {
     componentDidMount() {
         if(this.props.usersData.length === 0){
             this.props.changeLoading();
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`)
+            getUsers(this.props.pageSize, this.props.currentPage)
             .then((respons) => {
                 this.props.changeLoading();
                 this.props.createUsers(respons.data.items);
@@ -25,16 +33,50 @@ class UsersAPIContainer extends React.Component {
         }
     };
 
-    onClick(page) {
-        // debugger;
-        this.props.changeCurrentPage(page);
+    onClick(currentPage) {
+        this.props.changeCurrentPage(currentPage);
         this.props.changeLoading();
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${page}`)
+        getUsers(this.props.pageSize, currentPage)
             .then((respons) => {
                 this.props.changeLoading();
                 this.props.createUsers(respons.data.items);
             })
     }
+
+
+    blockedBtn = (id) => {
+        this.props.toggleSubscribeInProgres();
+        this.props.changeLockedSubscribeBtn(id);
+    };
+
+    changeFollow = (index, id, followed) => {
+        if(followed) {
+            this.blockedBtn(id);
+            unfollow(id)
+                .then((respons) => {
+                    this.blockedBtn(id);
+                    if(respons.data.resultCode === 0) {
+                        this.props.changeFollow(index);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        } else {
+            this.blockedBtn(id);
+            follow(id)
+                .then((respons) => {
+                    this.blockedBtn(id);
+                    if(respons.data.resultCode === 0) {
+                        this.props.changeFollow(index);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+
+    };
 
     render() {
         return (
@@ -43,7 +85,8 @@ class UsersAPIContainer extends React.Component {
                     loading={ this.props.loading }
                     pagesCount={ this.props.pagesCount }
                     usersData={ this.props.usersData }
-                    onChangeFollow={ this.props.changeFollow }
+                    changeFollow={ this.changeFollow }
+                    lockedSubscribeBtn={ this.props.lockedSubscribeBtn }
             />
         )
     };
@@ -62,6 +105,7 @@ let mapStateToProps = (state, ownProps) => {
         totalUsersCount: usersState.totalUsersCount,
         pagesCount: usersState.pagesCount,
         loading: usersState.loading,
+        lockedSubscribeBtn: usersState.lockedSubscribeBtn,
     }
     
 };
@@ -73,6 +117,8 @@ let mapDispatchToPropsObj = {
         changePagesCount,
         changeCurrentPage,
         changeLoading,
+        toggleSubscribeInProgres,
+        changeLockedSubscribeBtn,
 };
 
 

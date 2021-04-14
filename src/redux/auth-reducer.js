@@ -1,4 +1,5 @@
 const CHANGE_AUTH_STATE = "CHANGE-AUTH-STATE";
+const CHANGE_AUTHORIZED = "CHANGE-AUTHORIZED";
 
 
 const initialState = {
@@ -6,6 +7,7 @@ const initialState = {
     messages: null,
     fieldsErrors: null,
     resultCode: null,
+    authorized: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -15,6 +17,11 @@ const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case CHANGE_AUTH_STATE: 
             stateCopy = {...action.newState};
+
+            return stateCopy;
+
+        case CHANGE_AUTHORIZED: 
+            stateCopy.authorized = !stateCopy.authorized;
 
             return stateCopy;
 
@@ -29,5 +36,14 @@ export const changeAuthState = (newState) => {
         newState: newState,
     }
 };
+
+export const changeAuthorized = (newState) => {
+    // debugger;
+    return {
+        type: CHANGE_AUTHORIZED,
+    }
+};
+
+
 
 export default authReducer;

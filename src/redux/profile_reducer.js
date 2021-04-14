@@ -2,10 +2,12 @@ const UPDATE_POST_VALUE = "UPDATE-POST-VALUE";
 const ADD_POST = "ADD-POST";
 const CREATE_PROFILE = "CREATE-PROFILE"
 const CHANGE_HIDEN_CONTACTS = "CHANGE-HIDEN-CONTACTS";
+const CHANGE_PROFILE_LOADING = "CHANGE-PROFILE-LOADING"
 
 const initialState = {
     profileData: null,
     hiddenContacts: false,
+    loading: false,
     myPosts: {
         postData: [
             { id: 1, text: "hi" },
@@ -56,6 +58,11 @@ const profileReducer = (state = initialState, action) => {
                 
             return stateCopy;
 
+            case CHANGE_PROFILE_LOADING:
+                stateCopy.loading = !stateCopy.loading;
+                return stateCopy;
+    
+
         default: return stateCopy;
     };
 }
@@ -84,5 +91,11 @@ export const updatePostValue = (text) => {
 export const addPost = () => {
     return { type: ADD_POST };
 };
+
+export const changeProfileLoading = () => {
+    return {
+        type: CHANGE_PROFILE_LOADING,
+    }
+}
 
 export default profileReducer;

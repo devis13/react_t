@@ -4,6 +4,8 @@ const DELETE_USERS = "DELETE-USERS";
 const CHANGE_PAGES_COUNT = "CHANGE-PAGES-COUNT";
 const CHANGE_CURRENT_PAGE = "CHANGE-CURRENT-PAGE";
 const CHANGE_LOADING = "CHANGE-LOADING";
+const CHANGE_LOCKED_SUBSCRIBE_BTN = "CHANGE-LOCKED-SUBSCRIBE-BTN";
+const TOGGLE_SUBSCRIBE_IN_PROGRES = "TOGGLE-SUBSCRIBE-IN-PROGRES";
 
 
 const initialState = {
@@ -13,6 +15,8 @@ const initialState = {
     pagesCount: [],
     currentPage: 1,
     loading: false,
+    lockedSubscribeBtn: [],
+    subscribeInProgres: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -21,6 +25,7 @@ const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case CHANGE_FOLLOW:
+            // debugger;
             stateCopy.usersData = [...state.usersData];
             stateCopy.usersData[action.id].followed = !stateCopy.usersData[action.id].followed;
 
@@ -51,7 +56,19 @@ const usersReducer = (state = initialState, action) => {
             return stateCopy;
 
         case CHANGE_LOADING:
-            stateCopy.loading = !stateCopy.loading;
+            stateCopy.loading = !state.loading;
+            return stateCopy;
+
+        case CHANGE_LOCKED_SUBSCRIBE_BTN: 
+            stateCopy.lockedSubscribeBtn = state.subscribeInProgres ? 
+                [...state.lockedSubscribeBtn, action.id] : 
+                state.lockedSubscribeBtn.filter(id => id !== action.id)
+
+            return stateCopy;
+        
+        case TOGGLE_SUBSCRIBE_IN_PROGRES:
+            stateCopy.subscribeInProgres = !state.subscribeInProgres;
+
             return stateCopy;
 
         default: return state;
@@ -98,5 +115,19 @@ export const changeLoading = () => {
         type: CHANGE_LOADING,
     }
 }
+
+export const toggleSubscribeInProgres = () => {
+    return {
+        type: TOGGLE_SUBSCRIBE_IN_PROGRES,
+    }
+}
+
+export const changeLockedSubscribeBtn = (id) => {
+    return {
+        type: CHANGE_LOCKED_SUBSCRIBE_BTN,
+        id: id,
+    }
+}
+
 
 export default usersReducer;

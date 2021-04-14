@@ -1,24 +1,38 @@
-import * as axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
+import { logIn } from "../../../api/api";
+import { changeAuthorized } from "../../../redux/auth-reducer";
 import Auth from "./Auth";
 
 class AuthContainer extends React.Component {
 
-    onClick = () => {
-        axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", {
-            withCredentials: true,
-        })
+    onClick = (e) => {
+        e.preventDefault();
+        logIn()
             .then((response) => {
+                this.props.changeAuthorized();
                 debugger;
             });
     };
 
     render() {
-        return <Auth  onClick={ this.onClick }/>
+        return <Auth    onClick={ this.onClick }
+                        authorized={ this.props.authorized }/>
     };
 }
 
 
+const mapStateToProps = (state) => {
+    // debugger;
+    const authState =  state.header.auth
+    return {
+        authorized: authState.authorized,
+    };
+};
 
-export default connect(null, null)(AuthContainer);
+const mapDispatchToPropsObj = {
+    changeAuthorized,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToPropsObj)(AuthContainer);
