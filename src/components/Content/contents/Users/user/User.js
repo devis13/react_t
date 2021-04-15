@@ -12,7 +12,7 @@ const User = (props) => {
                                 alt="userAvatar"/>
                     </div>
                 </NavLink>
-                <button  disabled={props.lockedSubscribeBtn.some(id => id == props.id)} onClick={() => { props.changeFollow(props.index, props.id, props.followed) }}
+                <button  disabled={props.lockedSubscribeBtn.some(id => id === props.id)} onClick={() => { props.changeFollow(props.index, props.id, props.followed) }}
                         className={ styles.btn }>
                             { props.followed ? "Follow" : "Unfollow" }
                 </button>

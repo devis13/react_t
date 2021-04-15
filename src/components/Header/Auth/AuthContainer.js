@@ -1,18 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { logIn } from "../../../api/api";
-import { changeAuthorized } from "../../../redux/auth-reducer";
+import { changeAuthorized, getAuthorizedPages } from "../../../redux/auth-reducer";
 import Auth from "./Auth";
 
 class AuthContainer extends React.Component {
 
     onClick = (e) => {
-        e.preventDefault();
-        logIn()
-            .then((response) => {
-                this.props.changeAuthorized();
-                debugger;
-            });
+        this.props.getAuthorizedPages(e);
     };
 
     render() {
@@ -23,7 +17,6 @@ class AuthContainer extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    // debugger;
     const authState =  state.header.auth
     return {
         authorized: authState.authorized,
@@ -32,6 +25,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToPropsObj = {
     changeAuthorized,
+    getAuthorizedPages,
 };
 
 

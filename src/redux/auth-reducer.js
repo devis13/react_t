@@ -1,3 +1,5 @@
+import { logIn } from "../api/api";
+
 const CHANGE_AUTH_STATE = "CHANGE-AUTH-STATE";
 const CHANGE_AUTHORIZED = "CHANGE-AUTHORIZED";
 
@@ -21,6 +23,7 @@ const authReducer = (state = initialState, action) => {
             return stateCopy;
 
         case CHANGE_AUTHORIZED: 
+            // debugger;
             stateCopy.authorized = !stateCopy.authorized;
 
             return stateCopy;
@@ -37,12 +40,23 @@ export const changeAuthState = (newState) => {
     }
 };
 
-export const changeAuthorized = (newState) => {
+export const changeAuthorized = () => {
     // debugger;
     return {
         type: CHANGE_AUTHORIZED,
     }
 };
+
+
+export const getAuthorizedPages = (e) => {
+    // debugger;
+    return (dispatch) => {
+        e.preventDefault();
+        logIn()
+            .then((response) => {
+                dispatch(changeAuthorized());
+            });
+}};
 
 
 
