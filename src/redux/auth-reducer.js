@@ -51,7 +51,6 @@ export const changeAuthorized = () => {
 export const getAuthorizedPages = (e) => {
     // debugger;
     return (dispatch) => {
-        e.preventDefault();
         logIn()
             .then((response) => {
                 dispatch(changeAuthorized());

@@ -3,6 +3,7 @@ import styles from "./Users.module.scss"
 import usersImg from "../../../../img/user-img.png";
 import React from "react";
 import Preloader from "../../../Preloader/Preloader";
+import { Redirect } from "react-router";
 
 
 
@@ -30,7 +31,9 @@ const Users = (props) => {
             loading={props.loading}
             lockedSubscribeBtn={ props.lockedSubscribeBtn }/>;
     });
-    // debugger;
+
+    if(!props.isAuth) return <Redirect to="/login" />
+
     return (
         <div>
             <div className={styles.pagesCount}>

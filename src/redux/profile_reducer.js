@@ -22,7 +22,6 @@ const initialState = {
 };
 
 const profileReducer = (state = initialState, action) => {
-    // debugger;
     let stateCopy = {...state};
     stateCopy.myPosts = {...state.myPosts}
 
@@ -49,13 +48,11 @@ const profileReducer = (state = initialState, action) => {
             return stateCopy;
         
         case CREATE_PROFILE:
-            // debugger;
             stateCopy.profileData = {...action.profileData};
                 
             return stateCopy;
 
         case CHANGE_HIDEN_CONTACTS:
-            // debugger;
             stateCopy.hiddenContacts = !stateCopy.hiddenContacts;
                 
             return stateCopy;
@@ -69,8 +66,7 @@ const profileReducer = (state = initialState, action) => {
     };
 }
 
-export const createProfile = (profileData) => {
-    // debugger;
+const createProfile = (profileData) => {
     return {
         type: CREATE_PROFILE,
         profileData: profileData,
@@ -94,7 +90,7 @@ export const addPost = () => {
     return { type: ADD_POST };
 };
 
-export const changeProfileLoading = () => {
+const changeProfileLoading = () => {
     return {
         type: CHANGE_PROFILE_LOADING,
     }

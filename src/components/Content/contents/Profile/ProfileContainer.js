@@ -16,7 +16,8 @@ class ProfileContainer extends React.Component {
                         profileData={this.props.profileData}
                         hiddenContacts={this.props.hiddenContacts}
                         changeHiddenContacts={this.props.changeHiddenContacts}
-                        loading={ this.props.loading }/>;
+                        loading={ this.props.loading }
+                        isAuth={ this.props.isAuth }/>;
     };
 }
 
@@ -29,6 +30,7 @@ let mapStateToProps = (state, ownProps) => {
         profileData: profileData,
         hiddenContacts: profileState.hiddenContacts,
         loading: profileState.loading,
+        isAuth: state.header.auth.authorized,
     }
 };
 

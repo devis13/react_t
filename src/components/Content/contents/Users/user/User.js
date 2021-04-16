@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./User.module.scss";
 
 const User = (props) => {
+
     return (
         <div className={styles.user + " " + props.className}>
             <div className={styles._center}>

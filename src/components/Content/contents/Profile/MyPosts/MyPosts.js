@@ -8,7 +8,7 @@ function MyPosts(props) {
 
     const onChangeValue = () => {
         const text = newPostElement.current.value;
-        props.onChangeValue(text);
+        props.updatePostValue(text);
     } 
 
     const addPost = () => {

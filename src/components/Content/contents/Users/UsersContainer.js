@@ -30,6 +30,7 @@ class UsersAPIContainer extends React.Component {
                     usersData={ this.props.usersData }
                     onChangeSubscriping={ this.onChangeSubscriping}
                     lockedSubscribeBtn={ this.props.lockedSubscribeBtn }
+                    isAuth={ this.props.isAuth }
             />
         )
     };
@@ -49,6 +50,7 @@ let mapStateToProps = (state, ownProps) => {
         pagesCount: usersState.pagesCount,
         loading: usersState.loading,
         lockedSubscribeBtn: usersState.lockedSubscribeBtn,
+        isAuth: state.header.auth.authorized,
     }
     
 };
