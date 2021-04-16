@@ -1,3 +1,5 @@
+import * as socialApi from '../api/api'
+
 const UPDATE_POST_VALUE = "UPDATE-POST-VALUE";
 const ADD_POST = "ADD-POST";
 const CREATE_PROFILE = "CREATE-PROFILE"
@@ -95,6 +97,18 @@ export const addPost = () => {
 export const changeProfileLoading = () => {
     return {
         type: CHANGE_PROFILE_LOADING,
+    }
+}
+
+export const showProfile = (userId) => {
+    return (dispatch) => {
+        dispatch(changeProfileLoading());
+
+        socialApi.getProfile(userId)
+            .then((response) => {
+                dispatch(changeProfileLoading());
+                dispatch(createProfile(response.data));
+            })
     }
 }
 

@@ -1,3 +1,5 @@
+import * as socialApi from "../api/api"
+
 const CHANGE_FOLLOW = "CHANGE-FOLLOW";
 const CREATE_USERS = "CREATE-USERS";
 const DELETE_USERS = "DELETE-USERS";
@@ -19,8 +21,13 @@ const initialState = {
     subscribeInProgres: false,
 };
 
+const blockedBtn = (dispatch, id) => {
+    dispatch(toggleSubscribeInProgres());
+    dispatch(changeLockedSubscribeBtn(id));
+};
+
 const usersReducer = (state = initialState, action) => {
-    
+
     let stateCopy = { ...state };
 
     switch (action.type) {
@@ -30,42 +37,42 @@ const usersReducer = (state = initialState, action) => {
             stateCopy.usersData[action.id].followed = !stateCopy.usersData[action.id].followed;
 
             return stateCopy;
-        
+
         case CREATE_USERS:
-            return {...state, usersData: [...action.usersData]};
+            return { ...state, usersData: [...action.usersData] };
 
         case DELETE_USERS:
-            return {...state, usersData: [...action.usersData]};
+            return { ...state, usersData: [...action.usersData] };
 
         case CHANGE_PAGES_COUNT:
             stateCopy.totalUsersCount = action.totalUsersCount;
             stateCopy.pagesCount = [...state.pagesCount];
 
             let totalUsersCount = 100;
-            let totalPageCount = Math.ceil(totalUsersCount/stateCopy.pageSize);
-            for(let i = 1; i <= totalPageCount; i++) {
+            let totalPageCount = Math.ceil(totalUsersCount / stateCopy.pageSize);
+            for (let i = 1; i <= totalPageCount; i++) {
 
                 stateCopy.pagesCount.push(i);
             };
-    
+
             return stateCopy;
-        
-        case CHANGE_CURRENT_PAGE: 
+
+        case CHANGE_CURRENT_PAGE:
             stateCopy.currentPage = action.currentPage;
-            
+
             return stateCopy;
 
         case CHANGE_LOADING:
             stateCopy.loading = !state.loading;
             return stateCopy;
 
-        case CHANGE_LOCKED_SUBSCRIBE_BTN: 
-            stateCopy.lockedSubscribeBtn = state.subscribeInProgres ? 
-                [...state.lockedSubscribeBtn, action.id] : 
+        case CHANGE_LOCKED_SUBSCRIBE_BTN:
+            stateCopy.lockedSubscribeBtn = state.subscribeInProgres ?
+                [...state.lockedSubscribeBtn, action.id] :
                 state.lockedSubscribeBtn.filter(id => id !== action.id)
 
             return stateCopy;
-        
+
         case TOGGLE_SUBSCRIBE_IN_PROGRES:
             stateCopy.subscribeInProgres = !state.subscribeInProgres;
 
@@ -129,6 +136,61 @@ export const changeLockedSubscribeBtn = (id) => {
     }
 }
 
+export const getUsers = (usersData, pageSize, currentPage) => {
+    return (dispatch) => {
+        if (usersData.length === 0) {
+            dispatch(changeLoading());
+            socialApi.getUsers(pageSize, currentPage)
+                .then((respons) => {
+                    dispatch(changeLoading());
+                    dispatch(createUsers(respons.data.items));
+                    dispatch(changePagesCount(respons.data.totalCount));
+                });
+        };
+    };
+}
 
+export const switchPage = (pageSize, currentPage) => {
+    return (dispatch) => {
+        dispatch(changeCurrentPage(currentPage));
+        dispatch(changeLoading());
+        socialApi.getUsers(pageSize, currentPage)
+            .then((respons) => {
+                dispatch(changeLoading());
+                dispatch(createUsers(respons.data.items));
+            })
+    }
+}
+
+export const changeSubscribe = (index, id, followed) => {
+    return (dispatch) => {
+        if (followed) {
+            blockedBtn(dispatch, id);
+            socialApi.unfollow(id)
+                .then((respons) => {
+                    blockedBtn(dispatch, id);
+                    if (respons.data.resultCode === 0) {
+                        dispatch(changeFollow(index));
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        } else {
+            blockedBtn(dispatch, id);
+            socialApi.follow(id)
+                .then((respons) => {
+                    blockedBtn(dispatch, id);
+                    if (respons.data.resultCode === 0) {
+                        dispatch(changeFollow(index));
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+
+    };
+}
 
 export default usersReducer;

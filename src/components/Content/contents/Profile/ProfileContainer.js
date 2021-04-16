@@ -1,21 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { getProfile } from "../../../../api/api";
-import { createProfile, changeHiddenContacts, changeProfileLoading } from "../../../../redux/profile_reducer";
+import { showProfile } from "../../../../redux/profile_reducer";
 import Profile from "./Profile";
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
             let userId = this.props.match.params.userId ? this.props.match.params.userId : 2;
-            this.props.changeProfileLoading();
-
-            getProfile(userId)
-                .then((response) => {
-                    this.props.changeProfileLoading();
-                    this.props.createProfile(response.data)
-                })
+            this.props.showProfile(userId);
     };
 
     render() {
@@ -40,9 +33,7 @@ let mapStateToProps = (state, ownProps) => {
 };
 
 let mapDispatchToPropsObj = {
-    createProfile,
-    changeHiddenContacts,
-    changeProfileLoading,
+    showProfile,
 };
 
 const withUrlProfileComponent = withRouter(ProfileContainer);

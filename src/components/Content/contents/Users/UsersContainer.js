@@ -1,81 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUsers, follow, unfollow } from "../../../../api/api";
 
-import {    changeCurrentPage,
-            changeFollow, 
-            changePagesCount, 
-            createUsers, 
-            deleteUsers, 
-            changeLoading, 
-            toggleSubscribeInProgres,
-            changeLockedSubscribeBtn} from '../../../../redux/users_reducer';
+import {    getUsers,
+            switchPage,
+            changeSubscribe } from '../../../../redux/users_reducer';
 
 import Users from './Users';
 
 class UsersAPIContainer extends React.Component {
-    
-    constructor(props) {
-        super(props);
-
-        this.onClick = this.onClick.bind(this);
-    }
 
     componentDidMount() {
-        if(this.props.usersData.length === 0){
-            this.props.changeLoading();
-            getUsers(this.props.pageSize, this.props.currentPage)
-            .then((respons) => {
-                this.props.changeLoading();
-                this.props.createUsers(respons.data.items);
-                this.props.changePagesCount(respons.data.totalCount);
-            })
-        }
+        this.props.getUsers(this.props.usersData, this.props.pageSize, this.props.currentPage);
     };
 
-    onClick(currentPage) {
-        this.props.changeCurrentPage(currentPage);
-        this.props.changeLoading();
-        getUsers(this.props.pageSize, currentPage)
-            .then((respons) => {
-                this.props.changeLoading();
-                this.props.createUsers(respons.data.items);
-            })
+    onClick = (currentPage) => {
+        this.props.switchPage(this.props.pageSize, currentPage);
     }
 
-
-    blockedBtn = (id) => {
-        this.props.toggleSubscribeInProgres();
-        this.props.changeLockedSubscribeBtn(id);
-    };
-
-    changeFollow = (index, id, followed) => {
-        if(followed) {
-            this.blockedBtn(id);
-            unfollow(id)
-                .then((respons) => {
-                    this.blockedBtn(id);
-                    if(respons.data.resultCode === 0) {
-                        this.props.changeFollow(index);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        } else {
-            this.blockedBtn(id);
-            follow(id)
-                .then((respons) => {
-                    this.blockedBtn(id);
-                    if(respons.data.resultCode === 0) {
-                        this.props.changeFollow(index);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-        }
-
+    onChangeSubscriping = (index, id, followed) => {
+        this.props.changeSubscribe(index, id, followed);
     };
 
     render() {
@@ -85,7 +28,7 @@ class UsersAPIContainer extends React.Component {
                     loading={ this.props.loading }
                     pagesCount={ this.props.pagesCount }
                     usersData={ this.props.usersData }
-                    changeFollow={ this.changeFollow }
+                    onChangeSubscriping={ this.onChangeSubscriping}
                     lockedSubscribeBtn={ this.props.lockedSubscribeBtn }
             />
         )
@@ -111,14 +54,9 @@ let mapStateToProps = (state, ownProps) => {
 };
 
 let mapDispatchToPropsObj = {
-        changeFollow,
-        createUsers,
-        deleteUsers,
-        changePagesCount,
-        changeCurrentPage,
-        changeLoading,
-        toggleSubscribeInProgres,
-        changeLockedSubscribeBtn,
+        switchPage,
+        changeSubscribe,
+        getUsers,
 };
 
 
