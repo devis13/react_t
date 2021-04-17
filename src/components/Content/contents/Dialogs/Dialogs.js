@@ -5,7 +5,7 @@ import UsersContainer from "./Users/UsersContainer";
 
 const Dialogs = (props) => {
 
-    if(!props.isAuth) return <Redirect to="/login"/>
+    // if(!props.isAuth) return <Redirect to="/login"/>
 
     return (
         <div className={ styles.dialogs + " " + props.className }>

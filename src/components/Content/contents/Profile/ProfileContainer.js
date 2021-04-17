@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import { compose } from "redux";
 import { showProfile } from "../../../../redux/profile_reducer";
+import { withAuthRedirect } from "../../../../hok/withAuthRedirect"
 import Profile from "./Profile";
 
 class ProfileContainer extends React.Component {
@@ -38,6 +40,8 @@ let mapDispatchToPropsObj = {
     showProfile,
 };
 
-const withUrlProfileComponent = withRouter(ProfileContainer);
-
-export default connect(mapStateToProps, mapDispatchToPropsObj)(withUrlProfileComponent);
+export default compose(
+                        connect(mapStateToProps, mapDispatchToPropsObj),
+                        withRouter,
+                        withAuthRedirect,
+                )(ProfileContainer);

@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../../../hok/withAuthRedirect';
 
 import {    getUsers,
             switchPage,
@@ -7,7 +9,7 @@ import {    getUsers,
 
 import Users from './Users';
 
-class UsersAPIContainer extends React.Component {
+class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.getUsers(this.props.usersData, this.props.pageSize, this.props.currentPage);
@@ -61,8 +63,7 @@ let mapDispatchToPropsObj = {
         getUsers,
 };
 
-
-const UsersContainer = connect(mapStateToProps, mapDispatchToPropsObj)(UsersAPIContainer);
-
-
-export default UsersContainer;
+export default compose(
+    connect(mapStateToProps, mapDispatchToPropsObj),
+    withAuthRedirect,
+)(UsersContainer);

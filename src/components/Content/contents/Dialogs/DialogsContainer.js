@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../../../hok/withAuthRedirect";
 import Dialogs from "./Dialogs";
 
 class DialogsContainer extends React.Component {
@@ -15,4 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-export default connect(mapStateToProps, null)(DialogsContainer);
+export default compose(
+        connect(mapStateToProps, null),
+        withAuthRedirect,
+    )(DialogsContainer);

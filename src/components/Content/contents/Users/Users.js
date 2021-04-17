@@ -32,7 +32,7 @@ const Users = (props) => {
             lockedSubscribeBtn={ props.lockedSubscribeBtn }/>;
     });
 
-    if(!props.isAuth) return <Redirect to="/login" />
+    // if(!props.isAuth) return <Redirect to="/login" />
 
     return (
         <div>
